@@ -5,7 +5,9 @@ const Navbar = () => {
   return (
     <nav className="flex bg-red-50 w-full py-4 px-8">
       <div className="mr-auto">
-        <p className="font-semibold">Linkhub</p>
+        <Link to="/dashboard" className="font-semibold">
+          Linkhub
+        </Link>
       </div>
       <div className="flex gap-4">
         <Link to="/login">Login</Link>

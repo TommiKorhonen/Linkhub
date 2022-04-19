@@ -4,6 +4,8 @@ import Avatar from "../Avatar";
 
 const avatarProps = {
   src: "http://localhost/Portfolio.png",
+  h: 3,
+  w: 3,
 };
 
 describe("Avatar", () => {

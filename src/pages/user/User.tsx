@@ -7,7 +7,7 @@ const User = () => {
       <div className="max-w-[680px] h-screen w-full">
         {/* Avatar component */}
         <div className="flex flex-col items-center gap-4 mb-8 mt-3">
-          <Avatar src={UserImg} />
+          <Avatar src={UserImg} h={96} w={96} />
           <div>
             <p>@tommikorhonen</p>
           </div>

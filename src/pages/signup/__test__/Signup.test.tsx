@@ -8,33 +8,39 @@ beforeEach(() => {
   render(<Signup />);
 });
 
-// const typeIntoFrom: React.FC<{
-//   email?: string;
-//   password?: string;
-//   displayName?: string;
-// }> = ({ email, password, displayName }) => {
-//   const emailInputElement: HTMLInputElement = screen.getByRole("textbox", {
-//     name: /email/i,
-//   });
-//   const passwordInputElement: HTMLInputElement =
-//     screen.getByLabelText("Password");
-//   const displayNameInputElement: HTMLInputElement =
-//     screen.getByLabelText(/confirm password/i);
-//   if (email) {
-//     userEvent.type(emailInputElement, email);
-//   }
-//   if (password) {
-//     userEvent.type(passwordInputElement, password);
-//   }
-//   if (displayName) {
-//     userEvent.type(displayNameInputElement, displayName);
-//   }
-//   return {
-//     emailInputElement,
-//     passwordInputElement,
-//     displayNameInputElement,
-//   };
-// };
+const typeIntoFrom = ({
+  email,
+  password,
+  displayName,
+}: {
+  email?: string;
+  password?: string;
+  displayName?: string;
+}) => {
+  const emailInputElement: HTMLInputElement = screen.getByRole("textbox", {
+    name: /email/i,
+  });
+  const passwordInputElement: HTMLInputElement =
+    screen.getByLabelText(/password/i);
+  const displayNameInputElement: HTMLInputElement =
+    screen.getByLabelText(/username/i);
+
+  if (email) {
+    userEvent.type(emailInputElement, email);
+  }
+  if (password) {
+    userEvent.type(passwordInputElement, password);
+  }
+  if (displayName) {
+    userEvent.type(displayNameInputElement, displayName);
+  }
+
+  return {
+    emailInputElement,
+    passwordInputElement,
+    displayNameInputElement,
+  };
+};
 
 describe("signup", () => {
   test("inputs should be initially empty", () => {
@@ -49,7 +55,21 @@ describe("signup", () => {
     expect(passwordInputElement.value).toBe("");
     expect(displayNameInputElement.value).toBe("");
   });
-  //   test("paska", () => {
-  //     const { emailInputElement } = typeIntoFrom({ email: "selena@gmail.com" });
-  //   });
+
+  test("should be able to type an email", () => {
+    const { emailInputElement } = typeIntoFrom({ email: "selena@gmail.com" });
+    expect(emailInputElement.value).toBe("selena@gmail.com");
+  });
+
+  test("should be able to type a password", () => {
+    const { passwordInputElement } = typeIntoFrom({ password: "test" });
+    expect(passwordInputElement.value).toBe("test");
+  });
+
+  test("should be able to type password confirmation", () => {
+    const { displayNameInputElement } = typeIntoFrom({
+      displayName: "Juhani",
+    });
+    expect(displayNameInputElement.value).toBe("Juhani");
+  });
 });

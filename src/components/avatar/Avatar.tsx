@@ -1,8 +1,14 @@
 import React from "react";
 
-const Avatar: React.FC<{ src: string }> = ({ src }) => {
+interface IAvatarProps {
+  src: string;
+  w: number;
+  h: number;
+}
+
+const Avatar: React.FC<IAvatarProps> = ({ src, w, h }) => {
   return (
-    <div className="w-[96px] h-[96px] overflow-hidden">
+    <div className={`overflow-hidden`} style={{ width: w, height: h }}>
       <img
         src={src}
         alt="user avatar"
