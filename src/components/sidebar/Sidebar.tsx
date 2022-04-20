@@ -8,6 +8,7 @@ const Sidebar = () => {
       <div className="flex flex-col items-center mb-auto">
         <h2 className="font-semibold ">Linkhub</h2>
         <Link to="/create">Create</Link>
+        <Link to="/dashboard">Dashboard</Link>
       </div>
       <div className="p-4">
         <Avatar src={UserImg} h={36} w={36} />
