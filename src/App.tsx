@@ -10,17 +10,19 @@ import User from "./pages/user/User";
 
 function App() {
   return (
-    <div>
+    <div className="flex">
       <BrowserRouter>
-        <Navbar />
-        {/* <Sidebar /> */}
-        <Routes>
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/:user" element={<User />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/create" element={<CreateLink />} />
-        </Routes>
+        {/* <Navbar /> */}
+        <Sidebar />
+        <div className="flex-grow">
+          <Routes>
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/:user" element={<User />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/create" element={<CreateLink />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </div>
   );

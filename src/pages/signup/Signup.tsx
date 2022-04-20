@@ -14,7 +14,7 @@ const Signup = () => {
   return (
     <form className="auth-form" onSubmit={handleSubmit}>
       <h2 className="font-semibold text-3xl">Signup</h2>
-      <label className="block my-[24px] mx-auto">
+      <label>
         <span>Email:</span>
         <input
           required
@@ -23,8 +23,8 @@ const Signup = () => {
           value={email}
         />
       </label>
-      <label className="block my-[24px] mx-auto">
-        <span className="block">Password:</span>
+      <label>
+        <span>Password:</span>
         <input
           required
           type="password"
@@ -32,8 +32,8 @@ const Signup = () => {
           value={password}
         />
       </label>
-      <label className="block my-[24px] mx-auto">
-        <span className="block">Username:</span>
+      <label>
+        <span>Username:</span>
         <input
           required
           type="text"

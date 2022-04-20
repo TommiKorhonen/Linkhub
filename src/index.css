@@ -8,6 +8,9 @@
 input {
   @apply px-2 py-[6px] w-full border border-solid border-gray-400 rounded-md;
 }
+label {
+  @apply block my-[24px] mx-auto;
+}
 label span {
   @apply block text-lg text-gray-500 font-medium mb-2;
 }
