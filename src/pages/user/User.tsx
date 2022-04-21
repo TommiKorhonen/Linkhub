@@ -1,6 +1,8 @@
 import React from "react";
 import Avatar from "../../components/avatar/Avatar";
 import UserImg from "../../assets/user.png";
+import { useCollection } from "../../hooks/useCollection";
+
 const User = () => {
   return (
     <div className="mx-auto h-full flex flex-col items-center justify-center bg-[#E3D9D9]">
