@@ -35,6 +35,8 @@ export const useSignup = () => {
       await setDoc(doc(db, "users", res.user.uid), {
         displayName,
         photoURL: null,
+        background_color: "#E3D9D9",
+        text_color: "#000000",
       });
 
       // dispatch login action
