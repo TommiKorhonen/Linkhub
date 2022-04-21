@@ -10,7 +10,7 @@ import User from "./pages/user/User";
 
 function App() {
   return (
-    <div className="flex">
+    <div className="flex bg-[#f5f6f8]">
       <BrowserRouter>
         {/* <Navbar /> */}
         <Sidebar />
