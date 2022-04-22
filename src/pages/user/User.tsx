@@ -2,8 +2,11 @@ import React from "react";
 import Avatar from "../../components/avatar/Avatar";
 import UserImg from "../../assets/user.png";
 import { useCollection } from "../../hooks/useCollection";
+import { useDocument } from "../../hooks/useDocument";
 
 const User = () => {
+  const { document } = useDocument("users", "XCgeb8H5ofcWACiSAwNTz4yliIq1");
+  console.log(document);
   return (
     <div className="mx-auto h-full flex flex-col items-center justify-center bg-[#E3D9D9]">
       <div className="max-w-[680px] h-screen w-full">
