@@ -2,7 +2,10 @@ import { doc, onSnapshot, snapshotEqual } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase/config";
 
-export const useDocument = (collection: string, id: string | undefined) => {
+export const useDocument = (
+  collection: string,
+  id: string | undefined | null
+) => {
   const [document, setDocument] = useState<any>(null);
   const [error, setError] = useState<null | string>(null);
 

@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 const User = () => {
   let { username } = useParams();
   const { document, error } = useDocument("users", username);
-  console.log(document);
+  // console.log(document);
 
   if (error) {
     return <div className="error">{error}</div>;

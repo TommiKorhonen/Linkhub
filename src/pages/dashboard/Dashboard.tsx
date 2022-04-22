@@ -1,7 +1,12 @@
 import React from "react";
 import Preview from "./Preview";
 import { TrashIcon } from "@heroicons/react/solid";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useDocument } from "../../hooks/useDocument";
 const Dashboard = () => {
+  const { user } = useAuthContext();
+  const { document, error } = useDocument("users", user?.displayName);
+  console.log(document);
   return (
     <div className="grid grid-cols-2 min-h-screen">
       <div className="flex flex-col p-8">
@@ -15,7 +20,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="flex items-center justify-center h-full">
-        <Preview />
+        <Preview {...document} />
       </div>
     </div>
   );
