@@ -3,10 +3,19 @@ import Avatar from "../../components/avatar/Avatar";
 import UserImg from "../../assets/user.png";
 import { useCollection } from "../../hooks/useCollection";
 import { useDocument } from "../../hooks/useDocument";
+import { useParams } from "react-router-dom";
 
 const User = () => {
-  const { document } = useDocument("users", "XCgeb8H5ofcWACiSAwNTz4yliIq1");
+  let { id } = useParams();
+  const { document, error } = useDocument("users", id);
   console.log(document);
+
+  if (error) {
+    return <div className="error">{error}</div>;
+  }
+  if (!document) {
+    return <div className="loading">Loading...</div>;
+  }
   return (
     <div className="mx-auto h-full flex flex-col items-center justify-center bg-[#E3D9D9]">
       <div className="max-w-[680px] h-screen w-full">
@@ -14,7 +23,7 @@ const User = () => {
         <div className="flex flex-col items-center gap-4 mb-8 mt-3">
           <Avatar src={UserImg} h={96} w={96} />
           <div>
-            <p>@tommikorhonen</p>
+            <p>@{document.displayName}</p>
           </div>
         </div>
         <div className="bg-gray-200 p-4 w-full flex items-center justify-center rounded-3xl hover:invert">

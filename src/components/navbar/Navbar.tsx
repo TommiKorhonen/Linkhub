@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useLogout } from "../../hooks/useLogout";
 
 const Navbar = () => {
+  const { logout } = useLogout();
   return (
     <nav className="flex bg-red-50 w-full py-4 px-8">
       <div className="mr-auto">
@@ -12,7 +14,7 @@ const Navbar = () => {
       <div className="flex gap-4">
         <Link to="/login">Login</Link>
         <Link to="/signup">Sign up</Link>
-        <button>Logout</button>
+        <button onClick={logout}>Logout</button>
       </div>
     </nav>
   );

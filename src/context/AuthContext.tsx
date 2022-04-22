@@ -11,7 +11,7 @@ interface IState {
 
 type Actions =
   | { type: "LOGIN"; payload: FirebaseUser }
-  | { type: "LOGOUT"; user: null }
+  | { type: "LOGOUT"; user?: null }
   | { type: "AUTH_IS_READY"; payload: null | FirebaseUser };
 
 export const AuthContext = createContext<
