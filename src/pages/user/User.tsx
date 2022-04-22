@@ -6,8 +6,8 @@ import { useDocument } from "../../hooks/useDocument";
 import { useParams } from "react-router-dom";
 
 const User = () => {
-  let { id } = useParams();
-  const { document, error } = useDocument("users", id);
+  let { username } = useParams();
+  const { document, error } = useDocument("users", username);
   console.log(document);
 
   if (error) {
