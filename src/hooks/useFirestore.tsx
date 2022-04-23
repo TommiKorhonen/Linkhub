@@ -1,7 +1,13 @@
 import { useReducer, useEffect, useState } from "react";
 import { db } from "../firebase/config";
 
-import { addDoc, collection, DocumentData } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  DocumentData,
+  updateDoc,
+} from "firebase/firestore";
 
 interface IState {
   isPending: boolean;
@@ -14,7 +20,7 @@ type Actions =
   | { type: "IS_PENDING" }
   | { type: "ADDED_DOCUMENT"; payload: DocumentData }
   | { type: "DELETED_DOCUMENT"; payload: IState }
-  | { type: "UPDATED_DOCUMENT"; payload: IState }
+  | { type: "UPDATED_DOCUMENT"; payload: any }
   | { type: "ERROR"; payload: IState };
 
 let initialState = {};
@@ -86,5 +92,23 @@ export const useFirestore = (c: string) => {
     }
   };
 
-  return { response, addDocument };
+  // update document
+  const updateDocument = async (id: string, updates: any) => {
+    dispatch({ type: "IS_PENDING" });
+    const docRef = doc(db, c, id);
+
+    try {
+      const updatedDocument = await updateDoc(docRef, updates);
+      //   await ref.doc(id).update(updates);
+      dispatchIfNotCancelled({
+        type: "UPDATED_DOCUMENT",
+        payload: updatedDocument,
+      });
+      return updatedDocument;
+    } catch (err: any) {
+      dispatchIfNotCancelled({ type: "ERROR", payload: err.message });
+      return null;
+    }
+  };
+  return { response, addDocument, updateDocument };
 };
