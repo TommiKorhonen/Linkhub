@@ -32,11 +32,13 @@ export const useSignup = () => {
       await updateProfile(res.user, { displayName, photoURL: null });
 
       // create a user document
-      await setDoc(doc(db, "users", "regentomok"), {
+      await setDoc(doc(db, "users", displayName), {
         displayName,
         photoURL: null,
         background_color: "#E3D9D9",
         text_color: "#000000",
+        links: [],
+        id: res.user.uid,
       });
 
       // dispatch login action

@@ -11,7 +11,7 @@ const Dashboard = () => {
     <div className="grid grid-cols-2 min-h-screen">
       <div className="flex flex-col p-8">
         <h2 className="font-semibold text-3xl">Links</h2>
-        <div className="border border-solid border-black max-w-96 p-4 mt-4 bg-white shadow-md rounded-md">
+        <div className="border border-solid border-black w-96 p-4 mt-4 bg-white shadow-md rounded-md">
           <h2>Link title</h2>
           <div className="flex items-center justify-between">
             <p>url</p>
