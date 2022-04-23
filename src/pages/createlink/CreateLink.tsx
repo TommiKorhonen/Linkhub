@@ -1,15 +1,31 @@
 import React, { useState } from "react";
 import { ArrowLeftIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
+import { useFirestore } from "../../hooks/useFirestore";
+import { useDocument } from "../../hooks/useDocument";
+import { useAuthContext } from "../../hooks/useAuthContext";
 const CreateLink = () => {
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
   const [message, setMessage] = useState("");
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+
+  const { user } = useAuthContext();
+  const { document, error } = useDocument("users", user?.displayName);
+  const { updateDocument } = useFirestore("users");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setMessage("");
-    console.log(title, url);
-    if (title && url) {
+
+    const link = {
+      title,
+      url,
+    };
+
+    if (title && url && user) {
+      await updateDocument(document.id, {
+        links: [...document.links, link],
+      });
       setTitle("");
       setUrl("");
       setMessage("Link added!");
