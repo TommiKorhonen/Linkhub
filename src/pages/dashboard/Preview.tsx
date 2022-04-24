@@ -35,7 +35,7 @@ const Preview: React.FC<IUserDoc> = (props) => {
             links.map((link) => (
               <a
                 className="bg-gray-200 p-4 w-full flex items-center justify-center rounded-3xl hover:invert"
-                href="https://www.w3schools.com"
+                href={link.url}
                 key={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
