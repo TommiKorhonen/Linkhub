@@ -2,7 +2,7 @@ import React from "react";
 import Avatar from "../../components/avatar/Avatar";
 import UserImg from "../../assets/user.png";
 
-interface ILink {
+export interface ILink {
   title: string;
   url: string;
 }
