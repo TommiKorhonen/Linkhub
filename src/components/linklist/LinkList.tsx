@@ -3,7 +3,7 @@ import { ILink } from "../../pages/dashboard/Preview";
 
 const LinkList: React.FC<ILink[]> = (links) => {
   return (
-    <div>
+    <>
       {links &&
         links.map((link) => (
           <a
@@ -16,7 +16,7 @@ const LinkList: React.FC<ILink[]> = (links) => {
             {link.title}
           </a>
         ))}
-    </div>
+    </>
   );
 };
 
