@@ -1,15 +1,21 @@
 import React from "react";
 import Avatar from "../../components/avatar/Avatar";
 import UserImg from "../../assets/user.png";
+
+interface ILink {
+  title: string;
+  url: string;
+}
 interface IUserDoc {
   background_color: string;
   displayName: string;
   photoURL: null | string;
   text_color: string;
+  links: ILink[];
 }
 
 const Preview: React.FC<IUserDoc> = (props) => {
-  const { background_color, displayName, photoURL, text_color } = props;
+  const { background_color, displayName, photoURL, text_color, links } = props;
   return (
     <div className="w-[375px] h-[668px] border-4 border-solid border-black rounded-[35px] overflow-hidden overflow-y-auto">
       <div
@@ -25,12 +31,18 @@ const Preview: React.FC<IUserDoc> = (props) => {
           </h1>
         </div>
         <div className="flex flex-col gap-6 px-3 mt-8">
-          <div className="bg-gray-200 p-4 w-full flex items-center justify-center rounded-3xl hover:invert">
-            <a>Perkele</a>
-          </div>
-          <div className="bg-gray-200 p-4 w-full flex items-center justify-center rounded-3xl hover:invert">
-            <a>Perkele</a>
-          </div>
+          {links &&
+            links.map((link) => (
+              <a
+                className="bg-gray-200 p-4 w-full flex items-center justify-center rounded-3xl hover:invert"
+                href="https://www.w3schools.com"
+                key={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.title}
+              </a>
+            ))}
         </div>
       </div>
     </div>
