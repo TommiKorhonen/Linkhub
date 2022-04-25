@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useFirestore } from "../../hooks/useFirestore";
 import { useDocument } from "../../hooks/useDocument";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { v4 as uuidv4 } from "uuid";
 const CreateLink = () => {
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
@@ -16,10 +17,10 @@ const CreateLink = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setMessage("");
-
     const link = {
       title,
       url,
+      id: uuidv4(),
     };
 
     if (title && url && user) {
