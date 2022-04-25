@@ -9,6 +9,7 @@ const Sidebar = () => {
         <h2 className="font-semibold ">Linkhub</h2>
         <Link to="/create">Create</Link>
         <Link to="/dashboard">Dashboard</Link>
+        <Link to="/design">Design</Link>
       </div>
       <div className="p-4">
         <Avatar src={UserImg} h={36} w={36} />
