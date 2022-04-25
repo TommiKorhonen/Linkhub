@@ -41,7 +41,7 @@ const User = () => {
               <a
                 className="bg-gray-200 p-4 w-full flex items-center justify-center rounded-3xl hover:invert"
                 href={link.url}
-                key={link.url}
+                key={link.id}
                 target="_blank"
                 rel="noopener noreferrer"
               >
