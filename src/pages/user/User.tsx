@@ -4,7 +4,7 @@ import UserImg from "../../assets/user.png";
 import { useCollection } from "../../hooks/useCollection";
 import { useDocument } from "../../hooks/useDocument";
 import { useParams } from "react-router-dom";
-import { ILink } from "../dashboard/Preview";
+import { ILink } from "../../components/preview/Preview";
 
 const User = () => {
   let { username } = useParams();

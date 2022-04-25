@@ -1,5 +1,5 @@
 import React from "react";
-import { ILink } from "../../pages/dashboard/Preview";
+import { ILink } from "../preview/Preview";
 
 const LinkList: React.FC<ILink[]> = (links) => {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import Preview, { ILink } from "./Preview";
+import Preview, { ILink } from "../../components/preview/Preview";
 import { TrashIcon } from "@heroicons/react/solid";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useDocument } from "../../hooks/useDocument";
@@ -12,7 +12,7 @@ const Dashboard = () => {
   console.log(document);
 
   const removeLink = async (linkId: string) => {
-    if (linkId) {
+    if (linkId && user && user.displayName === document.id) {
       await updateDocument(document.id, {
         links: document.links.filter((item: ILink) => item.id !== linkId),
       });
