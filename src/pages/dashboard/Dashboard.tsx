@@ -3,16 +3,21 @@ import Preview, { ILink } from "./Preview";
 import { TrashIcon } from "@heroicons/react/solid";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useDocument } from "../../hooks/useDocument";
-
-// firebase imports
-import { doc, updateDoc, deleteField } from "firebase/firestore";
+import { useFirestore } from "../../hooks/useFirestore";
 
 const Dashboard = () => {
+  const { updateDocument } = useFirestore("users");
   const { user } = useAuthContext();
   const { document, error } = useDocument("users", user?.displayName);
   console.log(document);
 
-  const removeLink = () => {};
+  const removeLink = async (linkId: string) => {
+    if (linkId) {
+      await updateDocument(document.id, {
+        links: document.links.filter((item: ILink) => item.id !== linkId),
+      });
+    }
+  };
 
   if (!document) {
     return (
@@ -34,7 +39,10 @@ const Dashboard = () => {
               <h2>{link.title}</h2>
               <div className="flex items-center justify-between">
                 <p>{link.url}</p>
-                <TrashIcon className="h-6 w-6 text-gray-500" />
+                <TrashIcon
+                  className="h-6 w-6 text-gray-500 cursor-pointer"
+                  onClick={() => removeLink(link.id)}
+                />
               </div>
             </div>
           ))}
