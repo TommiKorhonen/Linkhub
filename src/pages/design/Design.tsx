@@ -7,6 +7,14 @@ import ProfileEdit from "./ProfileEdit";
 const Design = () => {
   const { user } = useAuthContext();
   const { document, error } = useDocument("users", user?.displayName);
+
+  if (error) {
+    return (
+      <div className="text-center h-screen flex items-center">
+        <h1 className="mx-auto error text-7xl">{error}</h1>
+      </div>
+    );
+  }
   if (!document) {
     return (
       <div className="text-center h-screen flex items-center">

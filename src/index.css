@@ -5,9 +5,11 @@
 .auth-form {
   @apply max-w-[420px] my-16 mx-auto p-10 border border-solid shadow-sm bg-[#ffffff];
 }
-input {
+input,
+textarea {
   @apply px-2 py-[6px] w-full border border-solid border-gray-400 rounded-md;
 }
+
 label {
   @apply block my-[24px] mx-auto;
 }
