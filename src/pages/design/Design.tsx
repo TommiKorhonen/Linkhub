@@ -3,6 +3,7 @@ import Preview from "../../components/preview/Preview";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useDocument } from "../../hooks/useDocument";
 import ProfileEdit from "./ProfileEdit";
+import ThemeEdit from "./ThemeEdit";
 
 const Design = () => {
   const { user } = useAuthContext();
@@ -27,6 +28,8 @@ const Design = () => {
       <div className="max-w-[672px] mx-auto mt-8">
         <h3 className="font-semibold my-12 mb-4 text-2xl">Profile</h3>
         <ProfileEdit />
+        <h3 className="font-semibold my-12 mb-4 text-2xl">Theme</h3>
+        <ThemeEdit />
       </div>
       <div className="flex items-center justify-center h-full">
         <Preview {...document} />
