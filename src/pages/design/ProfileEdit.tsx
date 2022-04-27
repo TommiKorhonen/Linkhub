@@ -10,10 +10,15 @@ import { useFirestore } from "../../hooks/useFirestore";
 import { useDocument } from "../../hooks/useDocument";
 const ProfileEdit = () => {
   const [progress, setProgress] = useState(0);
+
+  // Form inputs
   const [profileTitle, setProfileTitle] = useState("");
   const [bio, setBio] = useState("");
   const [thumbnail, setThumbnail] = useState<null | File>(null);
+  // File Errors
   const [thumbnailError, setThumbnailError] = useState<null | string>(null);
+
+  // Hooks
   const { user } = useAuthContext();
   const { updateDocument } = useFirestore("users");
   const { document, error } = useDocument("users", user?.displayName);
@@ -27,7 +32,6 @@ const ProfileEdit = () => {
       const uploadPath = `thumbnails/${user.uid}/profileImg`;
       const imgRef = await ref(storage, uploadPath);
       const uploadTask = uploadBytesResumable(imgRef, thumbnail);
-      // const imgUrl = await getDownloadURL(img);
 
       uploadTask.on(
         "state_changed",
@@ -37,7 +41,7 @@ const ProfileEdit = () => {
           );
           setProgress(prog);
         },
-        (error) => console.log(error),
+        (error) => setThumbnailError(error.message),
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             updateDocument(document.id, {
