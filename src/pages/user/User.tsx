@@ -26,7 +26,14 @@ const User = () => {
     );
   }
   return (
-    <div className="mx-auto h-full flex flex-col items-center justify-center bg-[#E3D9D9]">
+    <div
+      className="mx-auto h-full flex flex-col items-center justify-center"
+      style={{
+        backgroundColor: document.background_color
+          ? document.background_color
+          : "#ffffff",
+      }}
+    >
       <div className="max-w-[680px] h-screen w-full">
         {/* Avatar component */}
         <div className="flex flex-col items-center gap-4 mb-8 mt-3">
