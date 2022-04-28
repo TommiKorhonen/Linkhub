@@ -39,7 +39,13 @@ const User = () => {
         <div className="flex flex-col items-center gap-4 mb-8 mt-3">
           <Avatar src={UserImg} h={96} w={96} />
           <div>
-            <p>@{document.displayName}</p>
+            <p
+              style={{
+                color: document.text_color ? document.text_color : "#000000",
+              }}
+            >
+              @{document.displayName}
+            </p>
           </div>
         </div>
         <div className="flex flex-col gap-6 px-3 mt-8">
