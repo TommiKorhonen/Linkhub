@@ -27,9 +27,9 @@ const Design = () => {
     <div className="grid grid-cols-2 min-h-screen">
       <div className="max-w-[672px] mx-auto mt-8">
         <h3 className="font-semibold my-12 mb-4 text-2xl">Profile</h3>
-        <ProfileEdit />
+        <ProfileEdit {...document} user={user} />
         <h3 className="font-semibold my-12 mb-4 text-2xl">Theme</h3>
-        <ThemeEdit />
+        <ThemeEdit {...document} />
       </div>
       <div className="flex items-center justify-center h-full">
         <Preview {...document} />

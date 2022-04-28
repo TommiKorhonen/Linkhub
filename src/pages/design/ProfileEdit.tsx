@@ -7,8 +7,10 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { storage } from "../../firebase/config";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { useFirestore } from "../../hooks/useFirestore";
-import { useDocument } from "../../hooks/useDocument";
-const ProfileEdit = () => {
+import { DocumentData } from "firebase/firestore";
+import { User as FirebaseUser } from "firebase/auth";
+
+const ProfileEdit = (document: DocumentData, user: FirebaseUser) => {
   const [progress, setProgress] = useState(0);
 
   // Form inputs
@@ -19,9 +21,7 @@ const ProfileEdit = () => {
   const [thumbnailError, setThumbnailError] = useState<null | string>(null);
 
   // Hooks
-  const { user } = useAuthContext();
   const { updateDocument } = useFirestore("users");
-  const { document, error } = useDocument("users", user?.displayName);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
