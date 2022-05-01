@@ -1,6 +1,4 @@
 import React from "react";
-import { useAuthContext } from "../../hooks/useAuthContext";
-import { useDocument } from "../../hooks/useDocument";
 import UserImg from "../../assets/user.png";
 interface IAvatarProps {
   src: string | null;

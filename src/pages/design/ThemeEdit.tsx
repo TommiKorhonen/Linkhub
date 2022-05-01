@@ -1,5 +1,5 @@
 import { DocumentData } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useFirestore } from "../../hooks/useFirestore";
 
 const ThemeEdit = (document: DocumentData) => {

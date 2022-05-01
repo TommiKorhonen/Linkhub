@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Avatar from "../../components/avatar/Avatar";
 
-import { useAuthContext } from "../../hooks/useAuthContext";
-
 // firebase imports
 import { storage } from "../../firebase/config";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
