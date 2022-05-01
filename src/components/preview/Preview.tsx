@@ -18,11 +18,11 @@ interface IUserDoc {
 const Preview: React.FC<IUserDoc> = (props) => {
   const { background_color, displayName, photoURL, text_color, links } = props;
   return (
-    <div className="w-[375px] h-[668px] border-4 border-solid border-black rounded-[35px] overflow-hidden overflow-y-auto">
-      <div
-        className="flex flex-col py-12 w-full h-full mx-auto"
-        style={{ backgroundColor: background_color }}
-      >
+    <div
+      className="w-[375px] h-[668px] border-4 border-solid border-black rounded-[35px] overflow-hidden overflow-y-auto"
+      style={{ backgroundColor: background_color }}
+    >
+      <div className="flex flex-col py-12 w-full h-full mx-auto">
         <div className="mx-auto px-3">
           <Avatar src={photoURL} h={96} w={96} />
         </div>
