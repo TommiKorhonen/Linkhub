@@ -3,6 +3,7 @@ import Avatar from "../../components/avatar/Avatar";
 import { useDocument } from "../../hooks/useDocument";
 import { useParams } from "react-router-dom";
 import { ILink } from "../../components/preview/Preview";
+import LinkList from "../../components/linklist/LinkList";
 
 const User = () => {
   let { username } = useParams();
@@ -46,18 +47,7 @@ const User = () => {
           </div>
         </div>
         <div className="flex flex-col gap-6 px-3 mt-8">
-          {document.links &&
-            document.links.map((link: ILink) => (
-              <a
-                className="bg-gray-200 p-4 w-full flex items-center justify-center rounded-3xl hover:invert"
-                href={link.url}
-                key={link.id}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link.title}
-              </a>
-            ))}
+          {document.links && <LinkList links={document.links} />}
         </div>
       </div>
     </div>

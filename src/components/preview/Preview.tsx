@@ -1,10 +1,11 @@
 import React from "react";
 import Avatar from "../../components/avatar/Avatar";
+import LinkList from "../linklist/LinkList";
 
 export interface ILink {
+  id: string;
   title: string;
   url: string;
-  id: string;
 }
 interface IUserDoc {
   background_color: string;
@@ -30,19 +31,8 @@ const Preview: React.FC<IUserDoc> = (props) => {
             @{displayName}
           </h1>
         </div>
-        <div className="flex flex-col gap-6 px-3 mt-8">
-          {links &&
-            links.map((link) => (
-              <a
-                className="bg-gray-200 p-4 w-full flex items-center justify-center rounded-3xl hover:invert"
-                href={link.url}
-                key={link.id}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link.title}
-              </a>
-            ))}
+        <div className="flex flex-col gap-6 px-3 mt-8 ">
+          {links && <LinkList links={links} />}
         </div>
       </div>
     </div>
