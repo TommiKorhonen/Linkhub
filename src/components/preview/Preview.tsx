@@ -1,6 +1,5 @@
 import React from "react";
 import Avatar from "../../components/avatar/Avatar";
-import UserImg from "../../assets/user.png";
 
 export interface ILink {
   title: string;
@@ -24,7 +23,7 @@ const Preview: React.FC<IUserDoc> = (props) => {
         style={{ backgroundColor: background_color }}
       >
         <div className="mx-auto px-3">
-          <Avatar src={UserImg} h={96} w={96} />
+          <Avatar src={photoURL} h={96} w={96} />
         </div>
         <div className="mt-4">
           <h1 className="text-center" style={{ color: text_color }}>

@@ -79,7 +79,7 @@ const ProfileEdit = (document: DocumentData, user: FirebaseUser) => {
   return (
     <form className="p-4 bg-white rounded-md" onSubmit={handleSubmit}>
       <div className="flex gap-4 mt-0">
-        <Avatar h={96} w={96} />
+        <Avatar src={document.photoURL} h={96} w={96} />
         <div className="flex gap-4 items-center">
           <label className="m-0 ">
             <span>Choose image: {`${progress}%`}</span>

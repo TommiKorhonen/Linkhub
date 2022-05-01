@@ -1,7 +1,5 @@
 import React from "react";
 import Avatar from "../../components/avatar/Avatar";
-import UserImg from "../../assets/user.png";
-import { useCollection } from "../../hooks/useCollection";
 import { useDocument } from "../../hooks/useDocument";
 import { useParams } from "react-router-dom";
 import { ILink } from "../../components/preview/Preview";
@@ -9,7 +7,6 @@ import { ILink } from "../../components/preview/Preview";
 const User = () => {
   let { username } = useParams();
   const { document, error } = useDocument("users", username);
-  // console.log(document);
 
   if (error) {
     return (
@@ -37,7 +34,7 @@ const User = () => {
       <div className="max-w-[680px] h-screen w-full">
         {/* Avatar component */}
         <div className="flex flex-col items-center gap-4 mb-8 mt-3">
-          <Avatar src={UserImg} h={96} w={96} />
+          <Avatar src={document.photoURL} h={96} w={96} />
           <div>
             <p
               style={{
@@ -62,7 +59,6 @@ const User = () => {
               </a>
             ))}
         </div>
-        {/* links */}
       </div>
     </div>
   );
