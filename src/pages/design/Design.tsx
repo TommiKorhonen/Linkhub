@@ -1,5 +1,6 @@
 import React from "react";
 import Preview from "../../components/preview/Preview";
+import Sidebar from "../../components/sidebar/Sidebar";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useDocument } from "../../hooks/useDocument";
 import ProfileEdit from "./ProfileEdit";
@@ -24,17 +25,20 @@ const Design = () => {
     );
   }
   return (
-    <div className="grid grid-cols-2 min-h-screen">
-      <div className="max-w-[672px] mx-auto mt-8">
-        <h3 className="font-semibold my-12 mb-4 text-2xl">Profile</h3>
-        <ProfileEdit {...document} user={user} />
-        <h3 className="font-semibold my-12 mb-4 text-2xl">Theme</h3>
-        <ThemeEdit {...document} />
-      </div>
-      <div className="flex items-center justify-center h-full">
-        <Preview {...document} />
-      </div>
-    </div>
+    <main className="flex">
+      <Sidebar />
+      <section className="grid w-full grid-cols-2 min-h-screen">
+        <div className="max-w-[672px] mx-auto mt-8">
+          <h3 className="font-semibold my-12 mb-4 text-2xl">Profile</h3>
+          <ProfileEdit {...document} user={user} />
+          <h3 className="font-semibold my-12 mb-4 text-2xl">Theme</h3>
+          <ThemeEdit {...document} />
+        </div>
+        <div className="flex items-center justify-center h-full">
+          <Preview {...document} />
+        </div>
+      </section>
+    </main>
   );
 };
 

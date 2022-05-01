@@ -11,10 +11,8 @@ import User from "./pages/user/User";
 
 function App() {
   return (
-    <div className="flex bg-[#f5f6f8]">
+    <div className="bg-[#f5f6f8]">
       <BrowserRouter>
-        {/* <Navbar /> */}
-        <Sidebar />
         <div className="flex-grow">
           <Routes>
             <Route path="/signup" element={<Signup />} />

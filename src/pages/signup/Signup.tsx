@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Navbar from "../../components/navbar/Navbar";
+import Sidebar from "../../components/sidebar/Sidebar";
 import { useSignup } from "../../hooks/useSignup";
 
 const Signup = () => {
@@ -12,40 +14,45 @@ const Signup = () => {
     signup(email, password, displayName);
   };
   return (
-    <form className="auth-form" onSubmit={handleSubmit}>
-      <h2 className="font-semibold text-3xl">Signup</h2>
-      <label>
-        <span>Email:</span>
-        <input
-          required
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-      </label>
-      <label>
-        <span>Password:</span>
-        <input
-          required
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-      </label>
-      <label>
-        <span>Username:</span>
-        <input
-          required
-          type="text"
-          onChange={(e) => setDisplayName(e.target.value)}
-          value={displayName}
-        />
-      </label>
-      <button className="px-6 w-full mt-4 py-3 text-white  rounded-md bg-violet-500">
-        Create account
-      </button>
-      {error && <p className="error">{error}</p>}
-    </form>
+    <>
+      <Navbar />
+      <main className="h-screen">
+        <form className="auth-form w-full" onSubmit={handleSubmit}>
+          <h2 className="font-semibold text-3xl">Signup</h2>
+          <label>
+            <span>Email:</span>
+            <input
+              required
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+            />
+          </label>
+          <label>
+            <span>Password:</span>
+            <input
+              required
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
+          </label>
+          <label>
+            <span>Username:</span>
+            <input
+              required
+              type="text"
+              onChange={(e) => setDisplayName(e.target.value)}
+              value={displayName}
+            />
+          </label>
+          <button className="px-6 w-full mt-4 py-3 text-white  rounded-md bg-violet-500">
+            Create account
+          </button>
+          {error && <p className="error">{error}</p>}
+        </form>
+      </main>
+    </>
   );
 };
 
