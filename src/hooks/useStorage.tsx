@@ -1,36 +1,38 @@
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { storage } from "../firebase/config";
 
-export const useStorage = () => {
+// Give filepath and file you want to upload
+export const useStorage = (path: string, file: File | null) => {
   const [progress, setProgress] = useState(0);
   const [fileUrl, setFileUrl] = useState("");
   const [error, setError] = useState("");
 
-  // Give filepath and file you want to upload
-
-  const addFile = async (path: string, file: File) => {
+  useEffect(() => {
     setProgress(0);
 
-    const uploadPath = path;
-    const imgRef = await ref(storage, uploadPath);
-    const uploadTask = uploadBytesResumable(imgRef, file);
+    if (file) {
+      const uploadPath = path;
+      const imgRef = ref(storage, uploadPath);
+      const uploadTask = uploadBytesResumable(imgRef, file);
 
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const prog = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        setProgress(prog);
-      },
-      (error) => setError(error.message),
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          setFileUrl(downloadURL);
-        });
-      }
-    );
-  };
-  return { addFile, progress, error, fileUrl };
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const prog = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgress(prog);
+        },
+        (error) => setError(error.message),
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setFileUrl(downloadURL);
+          });
+        }
+      );
+    }
+  }, [file, path]);
+
+  return { progress, error, fileUrl };
 };

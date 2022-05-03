@@ -8,13 +8,16 @@ import { useFirestore } from "../../hooks/useFirestore";
 
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useDocument } from "../../hooks/useDocument";
+import { useStorage } from "../../hooks/useStorage";
 
 const ProfileEdit = () => {
-  const [progress, setProgress] = useState(0);
+  // const [progress, setProgress] = useState(0);
+
   // Form inputs
   const [profileTitle, setProfileTitle] = useState("");
   const [bio, setBio] = useState("");
   const [thumbnail, setThumbnail] = useState<null | File>(null);
+
   // File Errors
   const [thumbnailError, setThumbnailError] = useState<null | string>(null);
 
@@ -22,41 +25,20 @@ const ProfileEdit = () => {
   const { updateDocument } = useFirestore("users");
   const { user } = useAuthContext();
   const { document, error } = useDocument("users", user?.displayName);
+  const { fileUrl, progress } = useStorage(
+    `thumbnails/${user?.uid}/profileImg`,
+    thumbnail
+  );
 
-  // if (!document) {
-  //   return (
-  //     <div className="text-center h-screen flex items-center">
-  //       <h1 className="text-4xl">Loading...</h1>
-  //     </div>
-  //   );
-  // }
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setProgress(0);
-    // console.log(profileTitle, bio, thumbnail);
-    if (thumbnail && user !== null) {
-      // upload user thumbnail
-      const uploadPath = `thumbnails/${user.uid}/profileImg`;
-      const imgRef = await ref(storage, uploadPath);
-      const uploadTask = uploadBytesResumable(imgRef, thumbnail);
 
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          const prog = Math.round(
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          );
-          setProgress(prog);
-        },
-        (error) => setThumbnailError(error.message),
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            updateDocument(document.id, {
-              photoURL: downloadURL,
-            });
-          });
-        }
-      );
+    // console.log(profileTitle, bio, thumbnail);
+    if (thumbnail && user !== null && progress === 100) {
+      // upload user thumbnail
+      updateDocument(document.id, {
+        photoURL: fileUrl,
+      });
     }
   };
 
