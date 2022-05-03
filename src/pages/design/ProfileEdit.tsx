@@ -5,12 +5,12 @@ import Avatar from "../../components/avatar/Avatar";
 import { storage } from "../../firebase/config";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { useFirestore } from "../../hooks/useFirestore";
-import { DocumentData } from "firebase/firestore";
-import { User as FirebaseUser } from "firebase/auth";
 
-const ProfileEdit = (document: DocumentData, user: FirebaseUser) => {
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useDocument } from "../../hooks/useDocument";
+
+const ProfileEdit = () => {
   const [progress, setProgress] = useState(0);
-
   // Form inputs
   const [profileTitle, setProfileTitle] = useState("");
   const [bio, setBio] = useState("");
@@ -20,7 +20,16 @@ const ProfileEdit = (document: DocumentData, user: FirebaseUser) => {
 
   // Hooks
   const { updateDocument } = useFirestore("users");
+  const { user } = useAuthContext();
+  const { document, error } = useDocument("users", user?.displayName);
 
+  // if (!document) {
+  //   return (
+  //     <div className="text-center h-screen flex items-center">
+  //       <h1 className="text-4xl">Loading...</h1>
+  //     </div>
+  //   );
+  // }
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setProgress(0);
@@ -77,7 +86,7 @@ const ProfileEdit = (document: DocumentData, user: FirebaseUser) => {
   return (
     <form className="p-4 bg-white rounded-md" onSubmit={handleSubmit}>
       <div className="flex gap-4 mt-0">
-        <Avatar src={document.photoURL} h={96} w={96} />
+        {document && <Avatar src={document.photoURL} h={96} w={96} />}
         <div className="flex gap-4 items-center">
           <label className="m-0 ">
             <span>Choose image: {`${progress}%`}</span>
