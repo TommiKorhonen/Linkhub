@@ -36,8 +36,9 @@ const CreateLink = () => {
       }, 2000);
     }
   };
+
   return (
-    <main className="flex">
+    <main className="flex h-screen">
       <Sidebar />
       <form
         className="auth-form w-full h-[450px] relative"
