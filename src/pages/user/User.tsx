@@ -2,7 +2,6 @@ import React from "react";
 import Avatar from "../../components/avatar/Avatar";
 import { useDocument } from "../../hooks/useDocument";
 import { useParams } from "react-router-dom";
-import { ILink } from "../../components/preview/Preview";
 import LinkList from "../../components/linklist/LinkList";
 
 const User = () => {
@@ -32,18 +31,21 @@ const User = () => {
           : "#ffffff",
       }}
     >
-      <div className="max-w-[680px] h-screen w-full">
+      <div className="max-w-[680px] h-screen w-full overflow-hidden">
         {/* Avatar component */}
         <div className="flex flex-col items-center gap-4 mb-8 mt-3">
           <Avatar src={document.photoURL} h={96} w={96} />
-          <div>
+          <div className="flex flex-col gap-1">
             <p
               style={{
                 color: document.text_color ? document.text_color : "#000000",
               }}
+              className="text-center"
             >
               @{document.displayName}
             </p>
+            {/* Bio */}
+            <p className=" text-white">{document.bio ? document.bio : ""}</p>
           </div>
         </div>
         <div className="flex flex-col gap-6 px-3 mt-8">

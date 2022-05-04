@@ -12,11 +12,13 @@ interface IUserDoc {
   displayName: string;
   photoURL: null | string;
   text_color: string;
+  bio: string;
   links: ILink[];
 }
 
 const Preview: React.FC<IUserDoc> = (props) => {
-  const { background_color, displayName, photoURL, text_color, links } = props;
+  const { background_color, displayName, photoURL, text_color, links, bio } =
+    props;
   return (
     <div
       className="w-[375px] h-[668px] border-4 border-solid border-black rounded-[35px] overflow-hidden overflow-y-auto"
@@ -26,10 +28,11 @@ const Preview: React.FC<IUserDoc> = (props) => {
         <div className="mx-auto px-3">
           <Avatar src={photoURL} h={96} w={96} />
         </div>
-        <div className="mt-4">
+        <div className="mt-4 flex flex-col gap-1 overflow-hidden break-words">
           <h1 className="text-center" style={{ color: text_color }}>
             @{displayName}
           </h1>
+          <p className="text-center px-4">{bio ? bio : ""}</p>
         </div>
         <div className="flex flex-col gap-6 px-3 mt-8 ">
           {links && <LinkList links={links} />}

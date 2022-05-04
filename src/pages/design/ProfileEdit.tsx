@@ -11,11 +11,10 @@ import { useDocument } from "../../hooks/useDocument";
 import { useStorage } from "../../hooks/useStorage";
 
 const ProfileEdit = () => {
-  // const [progress, setProgress] = useState(0);
-
   // Form inputs
   const [profileTitle, setProfileTitle] = useState("");
   const [bio, setBio] = useState("");
+  const [bioLength, setBioLength] = useState(0);
   const [thumbnail, setThumbnail] = useState<null | File>(null);
 
   // File Errors
@@ -33,7 +32,14 @@ const ProfileEdit = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // console.log(profileTitle, bio, thumbnail);
+    if (bio.length > 0) {
+      updateDocument(document.id, {
+        bio: bio,
+      });
+      setBio("");
+      setBioLength(0);
+    }
+
     if (thumbnail && user !== null && progress === 100) {
       // upload user thumbnail
       updateDocument(document.id, {
@@ -65,6 +71,11 @@ const ProfileEdit = () => {
     setThumbnail(selected);
     console.log("thumbnail updated");
   };
+  const calculateBio = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setBio(e.target.value);
+    setBioLength(e.target.value.length);
+  };
+
   return (
     <form className="p-4 bg-white rounded-md" onSubmit={handleSubmit}>
       <div className="flex gap-4 mt-0">
@@ -93,14 +104,11 @@ const ProfileEdit = () => {
             onChange={(e) => setProfileTitle(e.target.value)}
           />
         </label>
-        <label>
+        <label className="mb-0">
           <span>Bio</span>
-          <textarea
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-            maxLength={80}
-          />
+          <textarea value={bio} onChange={calculateBio} maxLength={80} />
         </label>
+        <span className="float-right mb-2">{bioLength}/80</span>
         <button className="bg-green-500 w-full px-6 py-4 font-semibold rounded-md text-white">
           Save Changes
         </button>
