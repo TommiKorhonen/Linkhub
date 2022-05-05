@@ -4,7 +4,6 @@ import { TrashIcon } from "@heroicons/react/solid";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useDocument } from "../../hooks/useDocument";
 import { useFirestore } from "../../hooks/useFirestore";
-import Sidebar from "../../components/sidebar/Sidebar";
 
 const Dashboard = () => {
   const { updateDocument } = useFirestore("users");
@@ -22,14 +21,13 @@ const Dashboard = () => {
 
   if (!document) {
     return (
-      <div className="text-center h-screen flex items-center">
+      <div className="w-full h-screen flex items-center">
         <h1 className="mx-auto text-7xl">Loading...</h1>
       </div>
     );
   }
   return (
-    <main className="flex">
-      <Sidebar />
+    <main className="w-full">
       <section className="grid grid-cols-2 w-full min-h-screen">
         <div className="flex flex-col p-8">
           <h2 className="font-semibold text-3xl">Links</h2>

@@ -1,6 +1,5 @@
 import React from "react";
 import Preview from "../../components/preview/Preview";
-import Sidebar from "../../components/sidebar/Sidebar";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useDocument } from "../../hooks/useDocument";
 import ProfileEdit from "./ProfileEdit";
@@ -19,14 +18,13 @@ const Design = () => {
   }
   if (!document) {
     return (
-      <div className="text-center h-screen flex items-center">
+      <div className="w-full h-screen flex items-center">
         <h1 className="mx-auto text-7xl">Loading...</h1>
       </div>
     );
   }
   return (
-    <main className="flex">
-      <Sidebar />
+    <main className="w-full">
       <section className="grid w-full grid-cols-2 min-h-screen">
         <div className="max-w-[672px] mx-auto mt-8">
           <h3 className="font-semibold my-12 mb-4 text-2xl">Profile</h3>

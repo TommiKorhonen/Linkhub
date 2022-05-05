@@ -5,7 +5,7 @@ import { useFirestore } from "../../hooks/useFirestore";
 import { useDocument } from "../../hooks/useDocument";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { v4 as uuidv4 } from "uuid";
-import Sidebar from "../../components/sidebar/Sidebar";
+
 const CreateLink = () => {
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
@@ -38,8 +38,7 @@ const CreateLink = () => {
   };
 
   return (
-    <main className="flex h-screen">
-      <Sidebar />
+    <main className="w-full h-screen">
       <form
         className="auth-form w-full h-[450px] relative"
         onSubmit={handleSubmit}
