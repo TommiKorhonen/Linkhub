@@ -17,7 +17,7 @@ const Sidebar = () => {
   const { user } = useAuthContext();
   const { document, error } = useDocument("users", user?.displayName);
   return (
-    <nav className="flex flex-col items-center bg-violet-500 min-h-screen w-[200px] ">
+    <nav className="flex flex-col fixed items-center bg-violet-500 min-h-screen w-[200px] ">
       <div className="p-4">
         {document && <Avatar src={document.photoURL} h={96} w={96} />}
       </div>

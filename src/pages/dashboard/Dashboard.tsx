@@ -27,7 +27,7 @@ const Dashboard = () => {
     );
   }
   return (
-    <main className="w-full">
+    <main className="w-full ml-72">
       <section className="grid grid-cols-2 w-full min-h-screen">
         <div className="flex flex-col p-8">
           <h2 className="font-semibold text-3xl">Links</h2>
