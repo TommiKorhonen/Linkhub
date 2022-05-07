@@ -24,17 +24,15 @@ const Design = () => {
     );
   }
   return (
-    <main className="w-full ml-72">
-      <section className="grid w-full grid-cols-2 min-h-screen">
-        <div className="max-w-[672px] mx-auto mt-8">
-          <h3 className="font-semibold my-12 mb-4 text-2xl">Profile</h3>
-          <ProfileEdit />
-          <h3 className="font-semibold my-12 mb-4 text-2xl">Theme</h3>
-          <ThemeEdit {...document} />
-        </div>
-        <div className="flex items-center justify-center h-full">
-          <Preview {...document} />
-        </div>
+    <main className="w-full ml-72 grid  grid-cols-1 lg:grid-cols-2 min-h-screen">
+      <section className="max-w-[672px] mx-auto mt-8">
+        <h3 className="font-semibold my-12 mb-4 text-2xl">Profile</h3>
+        <ProfileEdit />
+        <h3 className="font-semibold my-12 mb-4 text-2xl">Theme</h3>
+        <ThemeEdit {...document} />
+      </section>
+      <section className="lg:flex items-center justify-center h-full hidden">
+        <Preview {...document} />
       </section>
     </main>
   );

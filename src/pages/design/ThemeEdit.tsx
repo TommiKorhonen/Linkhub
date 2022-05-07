@@ -47,7 +47,7 @@ const ThemeEdit = (document: DocumentData) => {
   };
 
   return (
-    <form className="p-4 bg-white rounded-md" onSubmit={handleSubmit}>
+    <form className="p-4 bg-white rounded-md mb-8" onSubmit={handleSubmit}>
       {message && (
         <p className="text-green-900 bg-lime-200 border border-solid border-green-900 rounded-sm p-2 my-3">
           {message}
