@@ -30,22 +30,24 @@ const Dashboard = () => {
     <main className="ml-72 grid grid-cols-1 lg:grid-cols-2 w-full min-h-screen">
       <section className="flex flex-col p-8">
         <h2 className="font-semibold text-3xl">Links</h2>
-        {document.links.length > 0 &&
-          document.links.map((link: ILink) => (
-            <div
-              className="border border-solid border-black w-96  p-4 mt-4 bg-white shadow-md rounded-md"
-              key={link.id}
-            >
-              <h2>{link.title}</h2>
-              <div className="flex items-center justify-between">
-                <p>{link.url}</p>
-                <TrashIcon
-                  className="h-6 w-6 text-gray-500 cursor-pointer"
-                  onClick={() => removeLink(link.id)}
-                />
-              </div>
-            </div>
-          ))}
+        <ul>
+          {document.links.length > 0 &&
+            document.links.map((link: ILink) => (
+              <li
+                className="border border-solid border-black w-96  p-4 mt-4 bg-white shadow-md rounded-md"
+                key={link.id}
+              >
+                <h2>{link.title}</h2>
+                <div className="flex items-center justify-between">
+                  <p>{link.url}</p>
+                  <TrashIcon
+                    className="h-6 w-6 text-gray-500 cursor-pointer"
+                    onClick={() => removeLink(link.id)}
+                  />
+                </div>
+              </li>
+            ))}
+        </ul>
       </section>
       <section className="lg:flex hidden items-center justify-center h-full">
         <Preview {...document} />
