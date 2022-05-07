@@ -32,7 +32,9 @@ const Preview: React.FC<IUserDoc> = (props) => {
           <h1 className="text-center" style={{ color: text_color }}>
             @{displayName}
           </h1>
-          <p className="text-center px-4">{bio ? bio : ""}</p>
+          <p className="text-center px-4" style={{ color: text_color }}>
+            {bio ? bio : ""}
+          </p>
         </div>
         <div className="flex flex-col gap-6 px-3 mt-8 ">
           {links && <LinkList links={links} />}

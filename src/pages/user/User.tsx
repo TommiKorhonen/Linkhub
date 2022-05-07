@@ -45,7 +45,9 @@ const User = () => {
               @{document.displayName}
             </p>
             {/* Bio */}
-            <p className=" text-white">{document.bio ? document.bio : ""}</p>
+            <p style={{ color: document.text_color }}>
+              {document.bio ? document.bio : ""}
+            </p>
           </div>
         </div>
         <div className="flex flex-col gap-6 px-3 mt-8">

@@ -18,7 +18,7 @@ const ThemeEdit = (document: DocumentData) => {
       setMessage("Please choose a color");
     }
 
-    // Change bg && title color
+    // Change bg && font color
     if (bgColor && textColor) {
       updateDocument(document.id, {
         background_color: bgColor,
@@ -28,12 +28,12 @@ const ThemeEdit = (document: DocumentData) => {
       setTextColor("");
       return setMessage("Background & Title Updated!");
     }
-    // Change title color
+    // Change font color
     if (textColor) {
       updateDocument(document.id, {
         text_color: textColor,
       });
-      setMessage("Title updated!");
+      setMessage("Font updated!");
       return setTextColor("");
     }
     // Change bg color
@@ -73,7 +73,7 @@ const ThemeEdit = (document: DocumentData) => {
       )}
 
       <label>
-        <span>Title color</span>
+        <span>Font color:</span>
         <input
           type="color"
           className="h-16 p-0 border-0"
