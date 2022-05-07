@@ -1,6 +1,10 @@
 import React from "react";
 import Preview, { ILink } from "../../components/preview/Preview";
+//Heroicons
+import { LinkIcon } from "@heroicons/react/solid";
 import { TrashIcon } from "@heroicons/react/solid";
+
+//Hooks imports
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useDocument } from "../../hooks/useDocument";
 import { useFirestore } from "../../hooks/useFirestore";
@@ -30,6 +34,17 @@ const Dashboard = () => {
     <main className="ml-72 grid grid-cols-1 lg:grid-cols-2 w-full min-h-screen">
       <section className="flex flex-col p-8">
         <h2 className="font-semibold text-3xl">Links</h2>
+        <button
+          className="w-80 flex items-center justify-center text-violet-500 bg-white py-1 border border-gray-200"
+          onClick={() =>
+            navigator.clipboard.writeText(
+              `http://localhost:3000/${user?.displayName}`
+            )
+          }
+        >
+          <LinkIcon className="h-6 w-6" />
+          <span>{`linkhub/${user?.displayName}`}</span>
+        </button>
         <ul>
           {document.links.length > 0 &&
             document.links.map((link: ILink) => (
