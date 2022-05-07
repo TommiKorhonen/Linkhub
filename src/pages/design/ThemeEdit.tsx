@@ -89,7 +89,7 @@ const ThemeEdit = (document: DocumentData) => {
           Reset
         </button>
       )}
-      <button className="bg-green-500 w-full px-6 py-4 font-semibold rounded-md text-white">
+      <button className="bg-violet-500 w-full px-6 py-4 font-semibold rounded-md text-white">
         Save Changes
       </button>
     </form>

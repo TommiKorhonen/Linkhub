@@ -109,7 +109,7 @@ const ProfileEdit = () => {
           <textarea value={bio} onChange={calculateBio} maxLength={80} />
         </label>
         <span className="float-right mb-2">{bioLength}/80</span>
-        <button className="bg-green-500 w-full px-6 py-4 font-semibold rounded-md text-white">
+        <button className="bg-violet-500 w-full px-6 py-4 font-semibold rounded-md text-white">
           Save Changes
         </button>
       </div>
