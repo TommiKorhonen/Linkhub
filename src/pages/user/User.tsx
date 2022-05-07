@@ -36,16 +36,17 @@ const User = () => {
         <div className="flex flex-col items-center gap-4 mb-8 mt-3">
           <Avatar src={document.photoURL} h={96} w={96} />
           <div className="flex flex-col gap-1">
-            <p
+            {/* Title */}
+            <h2
               style={{
                 color: document.text_color ? document.text_color : "#000000",
               }}
-              className="text-center"
+              className="text-center font-semibold"
             >
               @{document.displayName}
-            </p>
+            </h2>
             {/* Bio */}
-            <p style={{ color: document.text_color }}>
+            <p className="font-semibold" style={{ color: document.text_color }}>
               {document.bio ? document.bio : ""}
             </p>
           </div>

@@ -29,10 +29,18 @@ const Preview: React.FC<IUserDoc> = (props) => {
           <Avatar src={photoURL} h={96} w={96} />
         </div>
         <div className="mt-4 flex flex-col gap-1 overflow-hidden break-words">
-          <h1 className="text-center" style={{ color: text_color }}>
+          {/* Title */}
+          <h1
+            className="text-center font-semibold"
+            style={{ color: text_color }}
+          >
             @{displayName}
           </h1>
-          <p className="text-center px-4" style={{ color: text_color }}>
+          {/* Bio */}
+          <p
+            className="text-center px-4 font-semibold"
+            style={{ color: text_color }}
+          >
             {bio ? bio : ""}
           </p>
         </div>
