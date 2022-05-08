@@ -1,16 +1,25 @@
+import { async } from "@firebase/util";
 import React, { useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
+import { useCollection } from "../../hooks/useCollection";
 import { useSignup } from "../../hooks/useSignup";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
+  const [message, setMessage] = useState("");
   const { error, signup } = useSignup();
+  const { documents } = useCollection("users");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setMessage("");
+    const docIds = await documents.map((doc: any) => doc.id);
+    if (docIds.includes(displayName)) {
+      return setMessage("Username already exists");
+    }
     signup(email, password, displayName);
   };
   return (
@@ -38,7 +47,9 @@ const Signup = () => {
             />
           </label>
           <label>
-            <span>Username:</span>
+            <span>
+              Username: {message && <p className="error">{message}</p>}
+            </span>
             <input
               required
               type="text"

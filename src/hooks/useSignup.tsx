@@ -44,15 +44,11 @@ export const useSignup = () => {
       // dispatch login action
       dispatch({ type: "LOGIN", payload: res.user });
 
-      if (!isCancelled) {
-        setIsPending(false);
-        setError(null);
-      }
+      setIsPending(false);
+      setError(null);
     } catch (err: any) {
-      if (!isCancelled) {
-        setError(err.message);
-        setIsPending(false);
-      }
+      setError(err.message);
+      setIsPending(false);
     }
   };
   useEffect(() => {
