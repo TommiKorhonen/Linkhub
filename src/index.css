@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply bg-[#f5f6f8];
+}
 .auth-form {
   @apply max-w-[420px] my-16 mx-auto p-10 border border-solid shadow-sm bg-[#ffffff];
 }
