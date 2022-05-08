@@ -7,6 +7,7 @@ import { useAuthContext } from "./hooks/useAuthContext";
 import CreateLink from "./pages/createlink/CreateLink";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Design from "./pages/design/Design";
+import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import User from "./pages/user/User";
@@ -14,11 +15,12 @@ import User from "./pages/user/User";
 function App() {
   const { user, authIsReady } = useAuthContext();
   return (
-    <div className="bg-[#f5f6f8]">
+    <div>
       {authIsReady && (
         <BrowserRouter>
           <div>
             <Routes>
+              <Route path="/" element={<Home />} />
               <Route element={<SidebarLayout />}>
                 <Route
                   path="/dashboard"
@@ -51,6 +53,7 @@ function App() {
                   user ? <Navigate to="/dashboard" replace /> : <Login />
                 }
               />
+
               <Route path="/:username" element={<User />} />
 
               {/* <Route path="*" element={<Navigate to="/signup" replace />} /> */}
