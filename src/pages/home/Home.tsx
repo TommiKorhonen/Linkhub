@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
-
+import previewImg from "../../assets/previewImg.png";
 const Home = () => {
   return (
     <>
@@ -21,7 +21,9 @@ const Home = () => {
             Join for free!
           </Link>
         </section>
-        <section></section>
+        <section className="flex items-center justify-end">
+          <img src={previewImg} alt="" />
+        </section>
       </main>
     </>
   );
