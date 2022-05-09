@@ -96,14 +96,14 @@ const ProfileEdit = () => {
         </div>
       </div>
       <div>
-        <label>
+        {/* <label>
           <span>Profile Title</span>
           <input
             type="text"
             value={profileTitle}
             onChange={(e) => setProfileTitle(e.target.value)}
           />
-        </label>
+        </label> */}
         <label className="mb-0">
           <span>Bio</span>
           <textarea value={bio} onChange={calculateBio} maxLength={80} />
