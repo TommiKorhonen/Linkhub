@@ -15,7 +15,7 @@ const Home = () => {
             Share your links in one place!
           </p>
           <Link
-            to="/singup"
+            to="/signup"
             className=" bg-violet-500 w-96 text-center text-white py-4"
           >
             Join for free!
