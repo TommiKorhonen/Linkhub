@@ -1,6 +1,5 @@
 /// <reference types="Cypress"/>
 const { cleanup } = require("@testing-library/react");
-
 beforeEach(() => {
   cy.visit("http://localhost:3000");
   cy.viewport(1920, 1080);
