@@ -38,7 +38,7 @@ const Dashboard = () => {
           className="w-80 flex items-center justify-center text-violet-500 bg-white py-1 border border-gray-200"
           onClick={() =>
             navigator.clipboard.writeText(
-              `http://localhost:3000/${user?.displayName}`
+              `https://linkhub-3a46d.web.app/${user?.displayName}`
             )
           }
         >
