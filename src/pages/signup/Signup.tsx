@@ -26,7 +26,10 @@ const Signup = () => {
     <>
       <Navbar />
       <main className="h-screen">
-        <form className="auth-form w-full" onSubmit={handleSubmit}>
+        <form
+          className="auth-form w-full overflow-hidden"
+          onSubmit={handleSubmit}
+        >
           <h2 className="font-semibold text-3xl">Signup</h2>
           <label>
             <span>Email:</span>
@@ -56,6 +59,7 @@ const Signup = () => {
               onChange={(e) => setDisplayName(e.target.value)}
               value={displayName}
             />
+            <span className="mt-2">linkhub-3a46d.web.app/{displayName}</span>
           </label>
           <button className="px-6 w-full mt-4 py-3 text-white  rounded-md bg-violet-500">
             Create account
