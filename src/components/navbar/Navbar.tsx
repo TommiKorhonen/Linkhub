@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="w-full fixed top-0 bg-none py-4 px-8">
-      <ul className="flex items-center  mx-auto w-[1000px]">
-        <li className="mr-auto">
+      <ul className="flex justify-between items-center mx-auto max-w-[1000px]">
+        <li>
           <Link to="/" className="font-semibold text-lg">
             Linkhub
           </Link>

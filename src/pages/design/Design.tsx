@@ -24,7 +24,7 @@ const Design = () => {
     );
   }
   return (
-    <main className="w-full ml-72 grid  grid-cols-1 lg:grid-cols-2 min-h-screen">
+    <main className="w-full sm:ml-72 grid  grid-cols-1 lg:grid-cols-2 min-h-screen">
       <section className="max-w-[672px] mx-auto mt-8">
         <h3 className="font-semibold my-12 mb-4 text-2xl">Profile</h3>
         <ProfileEdit />

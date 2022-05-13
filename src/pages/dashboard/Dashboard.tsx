@@ -31,8 +31,8 @@ const Dashboard = () => {
     );
   }
   return (
-    <main className="ml-72 grid grid-cols-1 lg:grid-cols-2 w-full min-h-screen">
-      <section className="flex flex-col p-8">
+    <main className="md:ml-72 sm:ml-44 grid grid-cols-1 lg:grid-cols-2 w-full min-h-screen">
+      <section className="flex flex-col mx-auto p-4 sm:mx-0 sm:p-8">
         <h2 className="font-semibold text-3xl">Links</h2>
         <button
           className="w-80 flex items-center justify-center text-violet-500 bg-white py-1 border border-gray-200"
@@ -49,7 +49,7 @@ const Dashboard = () => {
           {document.links.length > 0 &&
             document.links.map((link: ILink) => (
               <li
-                className="border border-solid border-black w-96  p-4 mt-4 bg-white shadow-md rounded-md"
+                className="border border-solid border-black max-w-[400px] sm:w-96 p-4 mt-4 bg-white shadow-md rounded-md"
                 key={link.id}
               >
                 <h2>{link.title}</h2>

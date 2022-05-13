@@ -14,7 +14,7 @@ const Login = () => {
   return (
     <>
       <Navbar />
-      <main className="h-screen">
+      <main className="h-screen p-4 flex items-center">
         <form className="auth-form w-full" onSubmit={handleSubmit}>
           <h2 className="font-semibold text-3xl">Login</h2>
           <label>

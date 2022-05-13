@@ -25,7 +25,7 @@ const Signup = () => {
   return (
     <>
       <Navbar />
-      <main className="h-screen">
+      <main className="h-screen flex p-4 items-center">
         <form
           className="auth-form w-full overflow-hidden"
           onSubmit={handleSubmit}

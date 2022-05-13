@@ -38,7 +38,7 @@ const CreateLink = () => {
   };
 
   return (
-    <main className="w-full ml-56 h-screen">
+    <main className="w-full sm:ml-56 h-screen">
       <form
         className="auth-form w-full h-[450px] relative"
         onSubmit={handleSubmit}
