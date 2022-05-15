@@ -25,8 +25,8 @@ const Design = () => {
     );
   }
   return (
-    <main className="w-full sm:ml-72 grid  grid-cols-1 lg:grid-cols-2 min-h-screen">
-      <section className="max-w-[672px] mx-auto mt-8">
+    <main className="w-full sm:ml-72 grid  grid-cols-1 lg:grid-cols-2 max-h-screen">
+      <section className="max-w-[672px] mx-auto mt-8 lg:pr-8 overflow-scroll">
         <h1 className="font-semibold my-12 mb-4 text-2xl">Profile</h1>
         <ProfileEdit />
         <h1 className="font-semibold my-12 mb-4 text-2xl">Theme</h1>
