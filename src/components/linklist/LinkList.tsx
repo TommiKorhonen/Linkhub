@@ -7,7 +7,13 @@ const LinkList: React.FC<{ links: ILink[] }> = ({ links }) => {
     <>
       {links.length > 0 &&
         links.map((link) => (
-          <LinkItem key={link.id} id={""} url={link.url} title={link.title} />
+          <LinkItem
+            key={link.id}
+            id={""}
+            url={link.url}
+            title={link.title}
+            style={link.style}
+          />
         ))}
     </>
   );

@@ -6,6 +6,7 @@ export interface ILink {
   id: string;
   title: string;
   url: string;
+  style: string;
 }
 interface IUserDoc {
   background_color: string;
