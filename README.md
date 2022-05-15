@@ -10,6 +10,7 @@ I wanted to learn how linktree was made so I made my own version.
 * Create account
 * Create own links for your public profile
 * Delete links
+* Style your links 
 * Style your profile with different colours
 * Add personal profile picture
 * Add custom bio
