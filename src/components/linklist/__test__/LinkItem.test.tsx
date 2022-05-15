@@ -6,7 +6,9 @@ const avatarProps = {
   id: "",
   url: "https://tommi-korhonen.com/",
   title: "Portfolio",
-  style: "",
+  style: {
+    border_radius: "",
+  },
 };
 
 describe("Link", () => {

@@ -46,7 +46,10 @@ const User = () => {
               @{document.displayName}
             </h2>
             {/* Bio */}
-            <p className="font-semibold" style={{ color: document.text_color }}>
+            <p
+              className="font-semibold text-center"
+              style={{ color: document.text_color }}
+            >
               {document.bio ? document.bio : ""}
             </p>
           </div>

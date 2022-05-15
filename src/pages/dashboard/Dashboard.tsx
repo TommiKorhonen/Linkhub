@@ -13,7 +13,6 @@ const Dashboard = () => {
   const { updateDocument } = useFirestore("users");
   const { user } = useAuthContext();
   const { document, error } = useDocument("users", user?.displayName);
-  console.log(document);
 
   const removeLink = async (linkId: string) => {
     if (linkId && user && user.displayName === document.id) {
