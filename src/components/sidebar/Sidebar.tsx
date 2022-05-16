@@ -18,14 +18,14 @@ const Sidebar = () => {
   const { document, error } = useDocument("users", user?.displayName);
   return (
     <nav className="sm:flex flex-col fixed items-center bg-violet-500 h-full w-[200px] hidden">
-      <div className="p-4">
+      <div className="p-4 gap-2 flex flex-col items-center justify-center">
         {document && <Avatar src={document.photoURL} h={96} w={96} />}
+        <h2 className="font-bold text-center text-white mb-8">
+          Linkhub/{user?.displayName}
+        </h2>
       </div>
       <div className="flex flex-col items-center justify-between h-full">
         <div className="flex flex-col gap-4">
-          <h2 className="font-bold text-center text-white mb-8">
-            Linkhub/{user?.displayName}
-          </h2>
           <NavLink
             to="/create"
             className="flex items-center gap-2 py-2 px-4 rounded-md hover:bg-gray-500"
