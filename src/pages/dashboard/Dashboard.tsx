@@ -8,12 +8,27 @@ import { TrashIcon } from "@heroicons/react/solid";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useDocument } from "../../hooks/useDocument";
 import { useFirestore } from "../../hooks/useFirestore";
+import { useCollection } from "../../hooks/useCollection";
+import { DocumentData } from "firebase/firestore";
 
 const Dashboard = () => {
   const { updateDocument } = useFirestore("users");
   const { user } = useAuthContext();
   const { document, error } = useDocument("users", user?.displayName);
   const [copyMessage, setCopyMessage] = useState("");
+  const [paska, setPaska] = useState();
+
+  //test stuff
+  const { documents } = useCollection("links");
+
+  // Users personal link document
+
+  if (!documents) {
+    return <p>paska</p>;
+  }
+  const linkDoc = documents.filter(
+    (link: DocumentData) => link.createdBy === user?.uid
+  );
 
   const removeLink = async (linkId: string) => {
     if (linkId && user && user.displayName === document.id) {
@@ -54,8 +69,8 @@ const Dashboard = () => {
           {copyMessage && <p className="bg-gray-200 p-2 ">{copyMessage}</p>}
         </div>
         <ul>
-          {document.links.length > 0 &&
-            document.links.map((link: ILink) => (
+          {linkDoc.length > 0 &&
+            linkDoc.map((link: ILink) => (
               <li
                 className="border border-solid border-black max-w-[400px] sm:w-96 p-4 mt-4 bg-white shadow-md rounded-md"
                 key={link.id}
