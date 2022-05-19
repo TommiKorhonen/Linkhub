@@ -17,18 +17,14 @@ const Dashboard = () => {
   const { document, error } = useDocument("users", user?.displayName);
   const [copyMessage, setCopyMessage] = useState("");
   const { documents } = useCollection("links");
-
+  const { deleteDocument } = useFirestore("links");
   // Users personal link document
   const linkDoc =
     documents &&
-    documents.filter((link: DocumentData) => link.createdBy === user?.uid);
+    documents.filter((link: DocumentData) => link.createdBy.id === user?.uid);
 
   const removeLink = async (linkId: string) => {
-    if (linkId && user && user.displayName === document.id) {
-      await updateDocument(document.id, {
-        links: document.links.filter((item: ILink) => item.id !== linkId),
-      });
-    }
+    deleteDocument(linkId);
   };
   const copyToClipboard = () => {
     setCopyMessage("");

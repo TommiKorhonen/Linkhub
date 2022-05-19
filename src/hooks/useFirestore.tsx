@@ -4,6 +4,7 @@ import { db } from "../firebase/config";
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   DocumentData,
   updateDoc,
@@ -19,9 +20,9 @@ interface IState {
 type Actions =
   | { type: "IS_PENDING" }
   | { type: "ADDED_DOCUMENT"; payload: DocumentData }
-  | { type: "DELETED_DOCUMENT"; payload: IState }
+  | { type: "DELETED_DOCUMENT"; payload: null }
   | { type: "UPDATED_DOCUMENT"; payload: any }
-  | { type: "ERROR"; payload: IState };
+  | { type: "ERROR"; payload: string };
 
 let initialState = {};
 
@@ -110,5 +111,16 @@ export const useFirestore = (c: string) => {
       return null;
     }
   };
-  return { response, addDocument, updateDocument };
+
+  // delete document
+  const deleteDocument = async (id: string) => {
+    dispatch({ type: "IS_PENDING" });
+    try {
+      await deleteDoc(doc(db, c, id));
+      dispatchIfNotCancelled({ type: "DELETED_DOCUMENT", payload: null });
+    } catch (err: any) {
+      dispatchIfNotCancelled({ type: "ERROR", payload: "could not delete" });
+    }
+  };
+  return { response, addDocument, updateDocument, deleteDocument };
 };
