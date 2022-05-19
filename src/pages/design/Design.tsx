@@ -1,6 +1,8 @@
+import { DocumentData } from "firebase/firestore";
 import React from "react";
 import Preview from "../../components/preview/Preview";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { useCollection } from "../../hooks/useCollection";
 import { useDocument } from "../../hooks/useDocument";
 import LinkEdit from "./LinkEdit";
 import ProfileEdit from "./ProfileEdit";
@@ -9,6 +11,12 @@ import ThemeEdit from "./ThemeEdit";
 const Design = () => {
   const { user } = useAuthContext();
   const { document, error } = useDocument("users", user?.displayName);
+  const { documents } = useCollection("links");
+
+  // Users personal link document
+  const linkDoc =
+    documents &&
+    documents.filter((link: DocumentData) => link.createdBy === user?.uid);
 
   if (error) {
     return (
@@ -35,7 +43,7 @@ const Design = () => {
         <LinkEdit {...document} />
       </section>
       <section className="lg:flex items-center justify-center h-full hidden">
-        <Preview {...document} />
+        <Preview {...document} links={linkDoc} />
       </section>
     </main>
   );

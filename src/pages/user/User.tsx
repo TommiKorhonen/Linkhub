@@ -3,10 +3,20 @@ import Avatar from "../../components/avatar/Avatar";
 import { useDocument } from "../../hooks/useDocument";
 import { useParams } from "react-router-dom";
 import LinkList from "../../components/linklist/LinkList";
+import { useCollection } from "../../hooks/useCollection";
+import { DocumentData } from "firebase/firestore";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const User = () => {
+  const { user } = useAuthContext();
   let { username } = useParams();
   const { document, error } = useDocument("users", username);
+  const { documents } = useCollection("links");
+
+  // Users personal link document
+  const linkDoc =
+    documents &&
+    documents.filter((link: DocumentData) => link.createdBy === user?.uid);
 
   if (error) {
     return (
@@ -55,7 +65,7 @@ const User = () => {
           </div>
         </div>
         <div className="flex flex-col gap-6 px-3 mt-8">
-          {document.links && <LinkList links={document.links} />}
+          {linkDoc && <LinkList links={linkDoc} />}
         </div>
       </div>
     </div>

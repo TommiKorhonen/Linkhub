@@ -16,19 +16,12 @@ const Dashboard = () => {
   const { user } = useAuthContext();
   const { document, error } = useDocument("users", user?.displayName);
   const [copyMessage, setCopyMessage] = useState("");
-  const [paska, setPaska] = useState();
-
-  //test stuff
   const { documents } = useCollection("links");
 
   // Users personal link document
-
-  if (!documents) {
-    return <p>paska</p>;
-  }
-  const linkDoc = documents.filter(
-    (link: DocumentData) => link.createdBy === user?.uid
-  );
+  const linkDoc =
+    documents &&
+    documents.filter((link: DocumentData) => link.createdBy === user?.uid);
 
   const removeLink = async (linkId: string) => {
     if (linkId && user && user.displayName === document.id) {
@@ -69,7 +62,8 @@ const Dashboard = () => {
           {copyMessage && <p className="bg-gray-200 p-2 ">{copyMessage}</p>}
         </div>
         <ul>
-          {linkDoc.length > 0 &&
+          {linkDoc &&
+            linkDoc.length > 0 &&
             linkDoc.map((link: ILink) => (
               <li
                 className="border border-solid border-black max-w-[400px] sm:w-96 p-4 mt-4 bg-white shadow-md rounded-md"
@@ -88,7 +82,7 @@ const Dashboard = () => {
         </ul>
       </section>
       <section className="lg:flex hidden items-center justify-center h-full">
-        <Preview {...document} />
+        <Preview {...document} links={linkDoc} />
       </section>
     </main>
   );
