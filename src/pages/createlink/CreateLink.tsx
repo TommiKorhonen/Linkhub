@@ -12,22 +12,20 @@ const CreateLink = () => {
   const [message, setMessage] = useState("");
 
   const { user } = useAuthContext();
-  const { document, error } = useDocument("users", user?.displayName);
-  const { updateDocument } = useFirestore("users");
+  const { addDocument } = useFirestore("links");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setMessage("");
     const link = {
+      createdBy: {
+        id: user?.uid,
+      },
       title,
       url,
-      id: uuidv4(),
     };
-
     if (title && url && user) {
-      await updateDocument(document.id, {
-        links: [...document.links, link],
-      });
+      await addDocument(link);
       setTitle("");
       setUrl("");
       setMessage("Link added!");
