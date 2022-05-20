@@ -16,7 +16,7 @@ const User = () => {
   // Users personal link document
   const linkDoc =
     documents &&
-    documents.filter((link: DocumentData) => link.createdBy === user?.uid);
+    documents.filter((link: DocumentData) => link.createdBy.id === user?.uid);
 
   if (error) {
     return (
