@@ -1,7 +1,12 @@
 import React from "react";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useDocument } from "../../hooks/useDocument";
 import { ILink } from "../preview/Preview";
 
-const LinkItem: React.FC<ILink> = ({ url, title, style }) => {
+const LinkItem: React.FC<ILink> = ({ url, title }) => {
+  const { user } = useAuthContext();
+  const { document, error } = useDocument("users", user?.displayName);
+  const style = document && document.linkStyle;
   return (
     <a
       className={`p-4 w-full flex items-center justify-center shadow-xl hover:opacity-80 ${

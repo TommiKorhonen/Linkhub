@@ -3,6 +3,9 @@ import Avatar from "../../components/avatar/Avatar";
 import LinkList from "../linklist/LinkList";
 
 export interface ILink {
+  createdBy?: {
+    id: string;
+  };
   id: string;
   title: string;
   url: string;

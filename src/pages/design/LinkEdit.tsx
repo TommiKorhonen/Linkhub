@@ -1,9 +1,13 @@
 import { DocumentData } from "firebase/firestore";
+import { ILink } from "../../components/preview/Preview";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useDocument } from "../../hooks/useDocument";
 import { useFirestore } from "../../hooks/useFirestore";
 import LinkColors from "./LinkColors";
 
 const LinkEdit = (document: DocumentData) => {
   const { updateDocument } = useFirestore("users");
+
   const changeStyle = async (e: any) => {
     e.stopPropagation();
     const btnTitle = e.target.title;
@@ -11,42 +15,18 @@ const LinkEdit = (document: DocumentData) => {
       return;
     }
     if (btnTitle === "fill-no-border") {
-      const linksCopy = [...document.links];
-      linksCopy.forEach(
-        (link) =>
-          (link["style"] = {
-            ...link["style"],
-            border_radius: "rounded-none",
-          })
-      );
-      return await updateDocument(document.id, {
-        links: linksCopy,
+      return updateDocument(document.id, {
+        linkStyle: { ...document.linkStyle, border_radius: "rounded-none" },
       });
     }
     if (btnTitle === "fill-border-xl") {
-      const linksCopy = [...document.links];
-      linksCopy.forEach(
-        (link) =>
-          (link["style"] = {
-            ...link["style"],
-            border_radius: "rounded-3xl",
-          })
-      );
-      return await updateDocument(document.id, {
-        links: linksCopy,
+      return updateDocument(document.id, {
+        linkStyle: { ...document.linkStyle, border_radius: "rounded-3xl" },
       });
     }
     if (btnTitle === "fill-border-lg") {
-      const linksCopy = [...document.links];
-      linksCopy.forEach(
-        (link) =>
-          (link["style"] = {
-            ...link["style"],
-            border_radius: "rounded-lg",
-          })
-      );
-      return await updateDocument(document.id, {
-        links: linksCopy,
+      return updateDocument(document.id, {
+        linkStyle: { ...document.linkStyle, border_radius: "rounded-lg" },
       });
     }
     return;
