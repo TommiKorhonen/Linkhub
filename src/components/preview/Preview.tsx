@@ -9,11 +9,6 @@ export interface ILink {
   id: string;
   title: string;
   url: string;
-  style?: {
-    border_radius?: string;
-    background_color?: string;
-    text_color?: string;
-  };
 }
 interface IUserDoc {
   background_color: string;

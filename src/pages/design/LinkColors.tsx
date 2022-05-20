@@ -13,68 +13,41 @@ const LinkColors = (document: DocumentData) => {
 
     // Return if no colors choosed
     if (!bgColor && !textColor) {
-      setMessage("Please choose a color");
+      return setMessage("Please choose a color");
     }
 
     // Change bg && font color
     if (bgColor && textColor) {
-      const linksCopy = [...document.links];
-
-      linksCopy.forEach(
-        (link) =>
-          (link["style"] = {
-            ...link["style"],
-            background_color: bgColor,
-            text_color: textColor,
-          })
-      );
-      console.log(linksCopy);
-
       await updateDocument(document.id, {
-        links: linksCopy,
+        linkStyle: {
+          ...document.linkStyle,
+          background_color: bgColor,
+          text_color: textColor,
+        },
       });
-
       setBgColor("");
       setTextColor("");
       return setMessage("Background & Text Updated!");
     }
     // Change text color
     if (textColor) {
-      const linksCopy = [...document.links];
-
-      linksCopy.forEach(
-        (link) =>
-          (link["style"] = {
-            ...link["style"],
-            text_color: textColor,
-          })
-      );
-      console.log(linksCopy);
-
       await updateDocument(document.id, {
-        links: linksCopy,
+        linkStyle: {
+          ...document.linkStyle,
+          text_color: textColor,
+        },
       });
-
       setMessage("Text updated!");
       return setTextColor("");
     }
     // Change bg color
     if (bgColor) {
-      const linksCopy = [...document.links];
-
-      linksCopy.forEach(
-        (link) =>
-          (link["style"] = {
-            ...link["style"],
-            background_color: bgColor,
-          })
-      );
-      console.log(linksCopy);
-
       await updateDocument(document.id, {
-        links: linksCopy,
+        linkStyle: {
+          ...document.linkStyle,
+          background_color: bgColor,
+        },
       });
-
       setMessage("Background updated!");
       return setBgColor("");
     }
