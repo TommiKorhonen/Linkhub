@@ -1,8 +1,4 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { useAuthContext } from "../../hooks/useAuthContext";
-import { useDocument } from "../../hooks/useDocument";
-import { ILink } from "../preview/Preview";
 
 interface IlinkItemprops {
   url: string;
@@ -15,9 +11,6 @@ interface IlinkItemprops {
 }
 
 const LinkItem: React.FC<IlinkItemprops> = ({ url, title, style }) => {
-  let { username } = useParams();
-  const { document, error } = useDocument("users", username);
-  // const style = document && document.linkStyle;
   return (
     <a
       className={`p-4 w-full flex items-center justify-center shadow-xl hover:opacity-80 ${

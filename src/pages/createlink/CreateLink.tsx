@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { ArrowLeftIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
+
+// Hooks
 import { useFirestore } from "../../hooks/useFirestore";
-import { useDocument } from "../../hooks/useDocument";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { v4 as uuidv4 } from "uuid";
 
 const CreateLink = () => {
   const [title, setTitle] = useState("");

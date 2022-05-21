@@ -12,7 +12,6 @@ import { useCollection } from "../../hooks/useCollection";
 import { DocumentData } from "firebase/firestore";
 
 const Dashboard = () => {
-  const { updateDocument } = useFirestore("users");
   const { user } = useAuthContext();
   const { document, error } = useDocument("users", user?.displayName);
   const [copyMessage, setCopyMessage] = useState("");

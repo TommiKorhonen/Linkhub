@@ -1,7 +1,4 @@
 import { DocumentData } from "firebase/firestore";
-import { ILink } from "../../components/preview/Preview";
-import { useAuthContext } from "../../hooks/useAuthContext";
-import { useDocument } from "../../hooks/useDocument";
 import { useFirestore } from "../../hooks/useFirestore";
 import LinkColors from "./LinkColors";
 

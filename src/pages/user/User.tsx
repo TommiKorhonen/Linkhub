@@ -5,10 +5,8 @@ import { useParams } from "react-router-dom";
 import LinkList from "../../components/linklist/LinkList";
 import { useCollection } from "../../hooks/useCollection";
 import { DocumentData } from "firebase/firestore";
-import { useAuthContext } from "../../hooks/useAuthContext";
 
 const User = () => {
-  const { user } = useAuthContext();
   let { username } = useParams();
   const { document, error } = useDocument("users", username);
   const { documents } = useCollection("links");
