@@ -37,7 +37,6 @@ export const useSignup = () => {
         photoURL: null,
         background_color: "#E3D9D9",
         text_color: "#000000",
-        links: [],
         id: res.user.uid,
       });
 
