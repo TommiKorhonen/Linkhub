@@ -64,7 +64,7 @@ const LinkColors = (document: DocumentData) => {
         <span>Background color:</span>
         <input
           type="color"
-          className="h-16 p-0 border-0"
+          className="h-16 p-0 border-0 cursor-pointer"
           value={bgColor}
           onChange={(e) => setBgColor(e.target.value)}
         />
@@ -82,7 +82,7 @@ const LinkColors = (document: DocumentData) => {
         <span>Font color:</span>
         <input
           type="color"
-          className="h-16 p-0 border-0"
+          className="h-16 p-0 border-0 cursor-pointer"
           value={textColor}
           onChange={(e) => setTextColor(e.target.value)}
         />
