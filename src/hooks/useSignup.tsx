@@ -37,7 +37,7 @@ export const useSignup = () => {
         photoURL: null,
         background_color: "#E3D9D9",
         text_color: "#000000",
-        id: res.user.uid,
+        user_id: res.user.uid,
       });
 
       // dispatch login action

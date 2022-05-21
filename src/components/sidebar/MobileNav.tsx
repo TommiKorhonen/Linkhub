@@ -10,11 +10,19 @@ import { useLogout } from "../../hooks/useLogout";
 
 //Heroicons
 import { XCircleIcon } from "@heroicons/react/outline";
+import { DocumentData } from "firebase/firestore";
+import { useCollection } from "../../hooks/useCollection";
 
 const MobileNav = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
   const { document, error } = useDocument("users", user?.displayName);
+  const { documents } = useCollection("links");
+
+  // Users personal link document
+  const linkDoc =
+    documents &&
+    documents.filter((link: DocumentData) => link.createdBy.id === user?.uid);
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -47,7 +55,7 @@ const MobileNav = () => {
                 className="absolute cursor-pointer text-black bg-white p-2 rounded-full top-[90%] h-16 w-16"
                 onClick={() => setIsOpen(false)}
               />
-              <Preview {...document} />
+              <Preview {...document} links={linkDoc} />
             </section>
           </Modal>
         )}

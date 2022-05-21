@@ -16,7 +16,9 @@ const User = () => {
   // Users personal link document
   const linkDoc =
     documents &&
-    documents.filter((link: DocumentData) => link.createdBy.id === user?.uid);
+    documents.filter(
+      (link: DocumentData) => link.createdBy.id === document.user_id
+    );
 
   if (error) {
     return (
@@ -65,7 +67,7 @@ const User = () => {
           </div>
         </div>
         <div className="flex flex-col gap-6 px-3 mt-8">
-          {linkDoc && <LinkList links={linkDoc} />}
+          {linkDoc && <LinkList links={linkDoc} style={document.linkStyle} />}
         </div>
       </div>
     </div>

@@ -7,7 +7,9 @@ const avatarProps = {
   url: "https://tommi-korhonen.com/",
   title: "Portfolio",
   style: {
+    background_color: "",
     border_radius: "",
+    text_color: "",
   },
 };
 

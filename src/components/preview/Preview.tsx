@@ -14,14 +14,26 @@ interface IUserDoc {
   background_color: string;
   displayName: string;
   photoURL: null | string;
+  linkStyle?: {
+    background_color: string;
+    border_radius: string;
+    text_color: string;
+  };
   text_color: string;
   bio: string;
   links: ILink[];
 }
 
 const Preview: React.FC<IUserDoc> = (props) => {
-  const { background_color, displayName, photoURL, text_color, links, bio } =
-    props;
+  const {
+    background_color,
+    displayName,
+    photoURL,
+    text_color,
+    links,
+    bio,
+    linkStyle,
+  } = props;
   return (
     <div
       className="w-[375px] h-[668px] border-4 border-solid border-black rounded-[35px] overflow-hidden overflow-y-auto"
@@ -48,7 +60,7 @@ const Preview: React.FC<IUserDoc> = (props) => {
           </p>
         </div>
         <div className="flex flex-col gap-6 px-3 mt-8 ">
-          {links && <LinkList links={links} />}
+          {links && <LinkList links={links} style={linkStyle} />}
         </div>
       </div>
     </div>
