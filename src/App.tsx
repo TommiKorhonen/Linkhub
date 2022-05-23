@@ -1,8 +1,6 @@
-import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import Navbar from "./components/navbar/Navbar";
-import Sidebar from "./components/sidebar/Sidebar";
 import SidebarLayout from "./components/sidebar/SidebarLayout";
+import GlobalStyles from "./components/styles/Global";
 import { useAuthContext } from "./hooks/useAuthContext";
 import CreateLink from "./pages/createlink/CreateLink";
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -18,6 +16,7 @@ function App() {
     <div>
       {authIsReady && (
         <BrowserRouter>
+          <GlobalStyles />
           <div>
             <Routes>
               <Route path="/" element={<Home />} />
