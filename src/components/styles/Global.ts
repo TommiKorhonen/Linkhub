@@ -9,10 +9,18 @@ const GlobalStyles = createGlobalStyle`
   }
   body {
     font-family: 'Poppins', sans-serif;
+    background-color: #f5f6f8;
   }
   p{
     opacity: 0.6;
     line-height: 1.5;
+  }
+  li{
+    list-style: none;
+  }
+  a{
+    text-decoration: none;
+    color:black;
   }
 
 `;

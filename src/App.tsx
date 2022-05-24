@@ -1,6 +1,8 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
 import SidebarLayout from "./components/sidebar/SidebarLayout";
 import GlobalStyles from "./components/styles/Global";
+import { theme } from "./components/styles/theme";
 import { useAuthContext } from "./hooks/useAuthContext";
 import CreateLink from "./pages/createlink/CreateLink";
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -13,7 +15,7 @@ import User from "./pages/user/User";
 function App() {
   const { user, authIsReady } = useAuthContext();
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       {authIsReady && (
         <BrowserRouter>
           <GlobalStyles />
@@ -60,7 +62,7 @@ function App() {
           </div>
         </BrowserRouter>
       )}
-    </div>
+    </ThemeProvider>
   );
 }
 

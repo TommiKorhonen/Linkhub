@@ -1,3 +1,4 @@
+import { theme } from "./../../components/styles/theme";
 import styled from "styled-components";
 
 export const StyledHome = styled.main`
@@ -5,6 +6,10 @@ export const StyledHome = styled.main`
   padding-top: 100px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  @media (max-width: ${({ theme }) => theme.lg}) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 `;
 
 export const SectionLeft = styled.section`
@@ -21,5 +26,28 @@ export const SectionLeft = styled.section`
   }
   p {
     font-size: 1.25rem;
+  }
+
+  a {
+    background-color: ${({ theme }) => theme.colors.themeColor};
+    padding: 1rem 0;
+    color: white;
+    max-width: 24rem;
+    text-align: center;
+  }
+  @media (max-width: ${({ theme }) => theme.sm}) {
+    h1 {
+      font-size: 2.25rem;
+    }
+  }
+`;
+
+export const SectionRight = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: end;
+
+  @media (max-width: ${({ theme }) => theme.lg}) {
+    display: none;
   }
 `;
