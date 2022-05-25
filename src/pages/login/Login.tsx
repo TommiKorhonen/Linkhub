@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
+import { Button } from "../../components/styles/Button.styled";
+import { Error } from "../../components/styles/Error.styled";
+import { Form } from "../../components/styles/Form.styled";
 import { useLogin } from "../../hooks/useLogin";
-
+import { StyledLogin } from "./Login.styled";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,9 +17,9 @@ const Login = () => {
   return (
     <>
       <Navbar />
-      <main className="h-screen p-4 flex items-center">
-        <form className="auth-form w-full" onSubmit={handleSubmit}>
-          <h2 className="font-semibold text-3xl">Login</h2>
+      <StyledLogin>
+        <Form onSubmit={handleSubmit}>
+          <h2>Login</h2>
           <label>
             <span>Email:</span>
             <input
@@ -35,12 +38,10 @@ const Login = () => {
               value={password}
             />
           </label>
-          <button className="px-6 w-full mt-4 py-3 text-white rounded-md bg-violet-500">
-            Login
-          </button>
-          {error && <p className="error">{error}</p>}
-        </form>
-      </main>
+          <Button>Login</Button>
+          {error && <Error>{error}</Error>}
+        </Form>
+      </StyledLogin>
     </>
   );
 };

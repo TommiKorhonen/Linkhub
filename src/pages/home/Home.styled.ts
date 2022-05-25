@@ -23,6 +23,7 @@ export const SectionLeft = styled.section`
     font-size: 4.5rem;
     font-weight: bold;
     color: #374151;
+    line-height: 1;
   }
   p {
     font-size: 1.25rem;
