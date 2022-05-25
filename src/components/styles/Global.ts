@@ -27,6 +27,8 @@ const GlobalStyles = createGlobalStyle`
     width: 100%;
     border: 1px solid gray;
     border-radius: 0.375rem;
+    font-size: 1rem;
+    color: #374151;
   }
   label {
     display: block;
@@ -35,7 +37,7 @@ const GlobalStyles = createGlobalStyle`
   label span {
     display: block;
     font-size: 1.125rem;
-    color: rgb(107 114 128);
+    color: #374151;
     font-weight: 500;
     margin-bottom: 0.5rem
   }

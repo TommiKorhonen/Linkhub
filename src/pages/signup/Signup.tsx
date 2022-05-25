@@ -1,9 +1,11 @@
-import { async } from "@firebase/util";
 import React, { useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
-import Sidebar from "../../components/sidebar/Sidebar";
+import { Button } from "../../components/styles/Button.styled";
+import { Error } from "../../components/styles/Error.styled";
+import { Form } from "../../components/styles/Form.styled";
 import { useCollection } from "../../hooks/useCollection";
 import { useSignup } from "../../hooks/useSignup";
+import { StyledSignup } from "./Signup.styled";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -25,12 +27,9 @@ const Signup = () => {
   return (
     <>
       <Navbar />
-      <main className="h-screen flex p-4 items-center">
-        <form
-          className="auth-form w-full overflow-hidden"
-          onSubmit={handleSubmit}
-        >
-          <h2 className="font-semibold text-3xl">Signup</h2>
+      <StyledSignup>
+        <Form onSubmit={handleSubmit}>
+          <h2>Signup</h2>
           <label>
             <span>Email:</span>
             <input
@@ -51,7 +50,7 @@ const Signup = () => {
           </label>
           <label>
             <span>
-              Username: {message && <p className="error">{message}</p>}
+              Username: {message && <Error className="error">{message}</Error>}
             </span>
             <input
               required
@@ -59,14 +58,12 @@ const Signup = () => {
               onChange={(e) => setDisplayName(e.target.value)}
               value={displayName}
             />
-            <span className="mt-2">linkhub-3a46d.web.app/{displayName}</span>
+            <span>linkhub-3a46d.web.app/{displayName}</span>
           </label>
-          <button className="px-6 w-full mt-4 py-3 text-white  rounded-md bg-violet-500">
-            Create account
-          </button>
-          {error && <p className="error">{error}</p>}
-        </form>
-      </main>
+          <Button>Create account</Button>
+          {error && <Error>{error}</Error>}
+        </Form>
+      </StyledSignup>
     </>
   );
 };
