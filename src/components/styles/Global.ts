@@ -41,6 +41,9 @@ const GlobalStyles = createGlobalStyle`
     font-weight: 500;
     margin-bottom: 0.5rem
   }
+  button {
+    cursor: pointer;
+  }
 
 `;
 
