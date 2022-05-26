@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Preview, { ILink } from "../../components/preview/Preview";
 //Heroicons
 import { LinkIcon } from "@heroicons/react/solid";
@@ -10,6 +10,15 @@ import { useDocument } from "../../hooks/useDocument";
 import { useFirestore } from "../../hooks/useFirestore";
 import { useCollection } from "../../hooks/useCollection";
 import { DocumentData } from "firebase/firestore";
+import {
+  DashboardList,
+  SectionLinks,
+  StyledCopy,
+  StyledDashboard,
+} from "./Dashboard.styled";
+import { Container } from "../../components/styles/Container.styled";
+import { Success } from "../../components/styles/Success.styled";
+import { PreviewContainer } from "../../components/styles/PreviewContainer.styled";
 
 const Dashboard = () => {
   const { user } = useAuthContext();
@@ -43,43 +52,36 @@ const Dashboard = () => {
     );
   }
   return (
-    <main className="md:ml-72 sm:ml-44 grid grid-cols-1 lg:grid-cols-2 w-full min-h-screen">
-      <section className="flex flex-col mx-auto p-4 sm:mx-0 sm:p-8">
-        <h2 className="font-semibold text-3xl">Links</h2>
-        <div className="flex items-center gap-2">
-          <button
-            className="w-80 flex items-center justify-center text-violet-500 bg-white py-1 border border-gray-200"
-            onClick={() => copyToClipboard()}
-          >
-            <LinkIcon className="h-6 w-6" />
-            <span>{`linkhub/${user?.displayName}`}</span>
-          </button>
-          {copyMessage && <p className="bg-gray-200 p-2 ">{copyMessage}</p>}
-        </div>
-        <ul>
-          {linkDoc &&
-            linkDoc.length > 0 &&
-            linkDoc.map((link: ILink) => (
-              <li
-                className="border border-solid border-black max-w-[400px] sm:w-96 p-4 mt-4 bg-white shadow-md rounded-md"
-                key={link.id}
-              >
-                <h2>{link.title}</h2>
-                <div className="flex items-center justify-between">
-                  <p>{link.url}</p>
-                  <TrashIcon
-                    className="h-6 w-6 text-gray-500 cursor-pointer"
-                    onClick={() => removeLink(link.id)}
-                  />
-                </div>
-              </li>
-            ))}
-        </ul>
-      </section>
-      <section className="lg:flex hidden items-center justify-center h-full">
+    <StyledDashboard>
+      <SectionLinks>
+        <Container>
+          <h2>Links</h2>
+          <StyledCopy>
+            <button onClick={() => copyToClipboard()}>
+              <LinkIcon />
+              <span>{`linkhub/${user?.displayName}`}</span>
+            </button>
+            {copyMessage && <Success>{copyMessage}</Success>}
+          </StyledCopy>
+          <DashboardList>
+            {linkDoc &&
+              linkDoc.length > 0 &&
+              linkDoc.map((link: ILink) => (
+                <li key={link.id}>
+                  <h3>{link.title}</h3>
+                  <div>
+                    <p>{link.url}</p>
+                    <TrashIcon onClick={() => removeLink(link.id)} />
+                  </div>
+                </li>
+              ))}
+          </DashboardList>
+        </Container>
+      </SectionLinks>
+      <PreviewContainer>
         <Preview {...document} links={linkDoc} />
-      </section>
-    </main>
+      </PreviewContainer>
+    </StyledDashboard>
   );
 };
 

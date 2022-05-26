@@ -1,4 +1,5 @@
 import React from "react";
+import { StyledLinks } from "./LinkItem.styled";
 
 interface IlinkItemprops {
   url: string;
@@ -12,22 +13,20 @@ interface IlinkItemprops {
 
 const LinkItem: React.FC<IlinkItemprops> = ({ url, title, style }) => {
   return (
-    <a
-      className={`p-4 w-full flex items-center justify-center shadow-xl hover:opacity-80 ${
-        style?.border_radius ? style.border_radius : "rounded-3xl"
-      }`}
+    <StyledLinks
       style={{
         backgroundColor: style?.background_color
           ? style.background_color
           : "#d3d3d3",
         color: style?.text_color ? style?.text_color : "white",
+        borderRadius: style?.border_radius ? style?.border_radius : "1.5rem",
       }}
       href={url}
       target="_blank"
       rel="noopener noreferrer"
     >
       {title}
-    </a>
+    </StyledLinks>
   );
 };
 

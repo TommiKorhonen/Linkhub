@@ -1,6 +1,7 @@
 import React from "react";
 import Avatar from "../../components/avatar/Avatar";
 import LinkList from "../linklist/LinkList";
+import { PreviewWrapper, StyledPreview } from "./Preview.styled";
 
 export interface ILink {
   createdBy?: {
@@ -35,35 +36,20 @@ const Preview: React.FC<IUserDoc> = (props) => {
     linkStyle,
   } = props;
   return (
-    <div
-      className="w-[375px] h-[668px] border-4 border-solid border-black rounded-[35px] overflow-hidden overflow-y-auto"
-      style={{ backgroundColor: background_color }}
-    >
-      <div className="flex flex-col py-12 w-full h-full mx-auto">
-        <div className="mx-auto px-3">
+    <StyledPreview style={{ backgroundColor: background_color }}>
+      <PreviewWrapper>
+        <div>
           <Avatar src={photoURL} h={96} w={96} />
         </div>
-        <div className="mt-4 flex flex-col gap-1 overflow-hidden break-words">
+        <div>
           {/* Title */}
-          <h1
-            className="text-center font-semibold"
-            style={{ color: text_color }}
-          >
-            @{displayName}
-          </h1>
+          <h3 style={{ color: text_color }}>@{displayName}</h3>
           {/* Bio */}
-          <p
-            className="text-center px-4 font-semibold"
-            style={{ color: text_color }}
-          >
-            {bio ? bio : ""}
-          </p>
+          <p style={{ color: text_color }}>{bio ? bio : ""}</p>
         </div>
-        <div className="flex flex-col gap-6 px-3 mt-8 ">
-          {links && <LinkList links={links} style={linkStyle} />}
-        </div>
-      </div>
-    </div>
+        <div>{links && <LinkList links={links} style={linkStyle} />}</div>
+      </PreviewWrapper>
+    </StyledPreview>
   );
 };
 
