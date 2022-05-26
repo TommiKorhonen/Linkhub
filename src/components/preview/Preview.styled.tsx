@@ -17,7 +17,7 @@ export const PreviewWrapper = styled.div`
   height: 100%;
   margin: 0 auto;
 
-  div {
+  div:nth-child(1) {
     margin: 0 auto;
     padding: 0 0.75rem;
   }
@@ -29,7 +29,6 @@ export const PreviewWrapper = styled.div`
     gap: 0.25rem;
     overflow: hidden;
     overflow-wrap: break-word;
-
     h3 {
       text-align: center;
       font-weight: 600;
@@ -39,6 +38,7 @@ export const PreviewWrapper = styled.div`
       text-align: center;
       padding: 0 1rem;
       font-weight: 600;
+      opacity: 1;
     }
   }
   div:nth-child(3) {

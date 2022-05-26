@@ -6,6 +6,9 @@ import { useFirestore } from "../../hooks/useFirestore";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useDocument } from "../../hooks/useDocument";
 import { useStorage } from "../../hooks/useStorage";
+import { FormEditor } from "../../components/styles/Form.styled";
+import { AvatarEditContainer, BioEdit, BioLength } from "./ProfileEdit.styled";
+import { Button } from "../../components/styles/Button.styled";
 
 const ProfileEdit = () => {
   // Form inputs
@@ -74,43 +77,26 @@ const ProfileEdit = () => {
   };
 
   return (
-    <form className="p-4 bg-white rounded-md" onSubmit={handleSubmit}>
-      <div className="flex gap-4 mt-0">
+    <FormEditor onSubmit={handleSubmit}>
+      <AvatarEditContainer className="flex gap-4 mt-0">
         {document && <Avatar src={document.photoURL} h={96} w={96} />}
-        <div className="flex gap-4 items-center">
-          <label className="m-0 ">
+        <div>
+          <label>
             <span>Choose image: {`${progress}%`}</span>
-            <input
-              type="file"
-              className="bg-violet-500 font-semibold rounded-md text-white cursor-pointer"
-              onChange={handleFileChange}
-            />
+            <input type="file" onChange={handleFileChange} />
             {thumbnailError && <div className="error">{thumbnailError}</div>}
           </label>
-          {/* <button className="bg-gray-500 px-6 py-4 font-semibold rounded-md text-white">
-            Set Default
-          </button> */}
         </div>
-      </div>
-      <div>
-        {/* <label>
-          <span>Profile Title</span>
-          <input
-            type="text"
-            value={profileTitle}
-            onChange={(e) => setProfileTitle(e.target.value)}
-          />
-        </label> */}
-        <label className="mb-0">
+      </AvatarEditContainer>
+      <BioEdit>
+        <label>
           <span>Bio</span>
           <textarea value={bio} onChange={calculateBio} maxLength={80} />
         </label>
-        <span className="float-right mb-2">{bioLength}/80</span>
-        <button className="bg-violet-500 w-full px-6 py-4 font-semibold rounded-md text-white">
-          Save Changes
-        </button>
-      </div>
-    </form>
+        <BioLength>{bioLength}/80</BioLength>
+        <Button>Save Changes</Button>
+      </BioEdit>
+    </FormEditor>
   );
 };
 

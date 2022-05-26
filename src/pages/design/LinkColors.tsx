@@ -1,5 +1,6 @@
 import { DocumentData } from "firebase/firestore";
 import React, { useState } from "react";
+import { FormEditor } from "../../components/styles/Form.styled";
 import { useFirestore } from "../../hooks/useFirestore";
 
 const LinkColors = (document: DocumentData) => {
@@ -53,7 +54,10 @@ const LinkColors = (document: DocumentData) => {
     }
   };
   return (
-    <form className="p-4 bg-white rounded-md mb-8" onSubmit={handleSubmit}>
+    <FormEditor
+      className="p-4 bg-white rounded-md mb-8"
+      onSubmit={handleSubmit}
+    >
       {message && (
         <p className="text-green-900 bg-lime-200 border border-solid border-green-900 rounded-sm p-2 my-3">
           {message}
@@ -98,7 +102,7 @@ const LinkColors = (document: DocumentData) => {
       <button className="bg-violet-500 w-full px-6 py-4 font-semibold rounded-md text-white">
         Save Changes
       </button>
-    </form>
+    </FormEditor>
   );
 };
 

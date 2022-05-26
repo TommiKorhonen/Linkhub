@@ -1,5 +1,7 @@
 import { DocumentData } from "firebase/firestore";
 import React, { useState } from "react";
+import { FormEditor } from "../../components/styles/Form.styled";
+import { Success } from "../../components/styles/Success.styled";
 import { useFirestore } from "../../hooks/useFirestore";
 
 const ThemeEdit = (document: DocumentData) => {
@@ -47,13 +49,12 @@ const ThemeEdit = (document: DocumentData) => {
   };
 
   return (
-    <form className="p-4 bg-white rounded-md mb-8" onSubmit={handleSubmit}>
+    <FormEditor onSubmit={handleSubmit}>
       {message && (
-        <p className="text-green-900 bg-lime-200 border border-solid border-green-900 rounded-sm p-2 my-3">
+        <Success className="text-green-900 bg-lime-200 border border-solid border-green-900 rounded-sm p-2 my-3">
           {message}
-        </p>
+        </Success>
       )}
-
       <label className="m-0">
         <span>Background color:</span>
         <input
@@ -92,7 +93,7 @@ const ThemeEdit = (document: DocumentData) => {
       <button className="bg-violet-500 w-full px-6 py-4 font-semibold rounded-md text-white">
         Save Changes
       </button>
-    </form>
+    </FormEditor>
   );
 };
 

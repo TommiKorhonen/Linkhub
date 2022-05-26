@@ -9,3 +9,9 @@ export const Form = styled.form`
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   background-color: #ffffff;
 `;
+export const FormEditor = styled(Form)`
+  padding: 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  margin: 0;
+`;
