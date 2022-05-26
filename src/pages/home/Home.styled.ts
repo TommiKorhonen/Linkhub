@@ -48,7 +48,7 @@ export const SectionRight = styled.section`
   align-items: center;
   justify-content: end;
 
-  @media (min-width: ${({ theme }) => theme.lg}) {
+  @media (max-width: ${({ theme }) => theme.lg}) {
     display: none;
   }
 `;
