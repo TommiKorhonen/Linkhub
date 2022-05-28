@@ -19,10 +19,15 @@ export const StyledDesign = styled.main`
 
 export const SectionEditors = styled.section`
   max-width: 672px;
-  margin-top: 2rem;
-  padding-right: 2rem;
-  overflow: scroll;
+  margin: 2rem auto 0 auto;
 
+  overflow: scroll;
+  @media (min-width: ${({ theme }) => theme.sm}) {
+    padding-right: 2rem;
+  }
+  @media (max-width: ${({ theme }) => theme.sm}) {
+    padding: 1rem;
+  }
   h2 {
     font-weight: 600;
     margin: 3rem 0 1rem 0;

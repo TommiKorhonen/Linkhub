@@ -1,7 +1,14 @@
 import { DocumentData } from "firebase/firestore";
 import React, { useState } from "react";
+import {
+  Button,
+  ButtonContainer,
+  ResetButton,
+} from "../../components/styles/Button.styled";
 import { FormEditor } from "../../components/styles/Form.styled";
+import { Success } from "../../components/styles/Success.styled";
 import { useFirestore } from "../../hooks/useFirestore";
+import { BgEditor, FontEditor } from "./ThemeEdit.style";
 
 const LinkColors = (document: DocumentData) => {
   const { updateDocument } = useFirestore("users");
@@ -54,54 +61,37 @@ const LinkColors = (document: DocumentData) => {
     }
   };
   return (
-    <FormEditor
-      className="p-4 bg-white rounded-md mb-8"
-      onSubmit={handleSubmit}
-    >
-      {message && (
-        <p className="text-green-900 bg-lime-200 border border-solid border-green-900 rounded-sm p-2 my-3">
-          {message}
-        </p>
-      )}
+    <FormEditor onSubmit={handleSubmit}>
+      {message && <Success>{message}</Success>}
 
-      <label className="m-0">
+      <BgEditor className="m-0">
         <span>Background color:</span>
         <input
           type="color"
-          className="h-16 p-0 border-0 cursor-pointer"
+          title="bgColor"
           value={bgColor}
           onChange={(e) => setBgColor(e.target.value)}
         />
-      </label>
+      </BgEditor>
       {bgColor && (
-        <button
-          className="bg-red-800 py-1 px-4 text-white"
-          onClick={() => setBgColor("")}
-        >
-          Reset
-        </button>
+        <ResetButton onClick={() => setBgColor("")}>Reset</ResetButton>
       )}
 
-      <label>
+      <FontEditor>
         <span>Font color:</span>
         <input
           type="color"
-          className="h-16 p-0 border-0 cursor-pointer"
+          title="fontColor"
           value={textColor}
           onChange={(e) => setTextColor(e.target.value)}
         />
-      </label>
+      </FontEditor>
       {textColor && (
-        <button
-          className="bg-red-800 py-1 px-4 mb-4 text-white"
-          onClick={() => setTextColor("")}
-        >
-          Reset
-        </button>
+        <ResetButton onClick={() => setTextColor("")}>Reset</ResetButton>
       )}
-      <button className="bg-violet-500 w-full px-6 py-4 font-semibold rounded-md text-white">
-        Save Changes
-      </button>
+      <ButtonContainer>
+        <Button>Save Changes</Button>
+      </ButtonContainer>
     </FormEditor>
   );
 };

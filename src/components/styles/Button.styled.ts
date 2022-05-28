@@ -10,3 +10,14 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
 `;
+export const ResetButton = styled(Button)`
+  background-color: red;
+  padding: 0.5rem 1rem;
+`;
+
+export const ButtonContainer = styled.div`
+  margin-top: 1rem;
+  button {
+    width: 100%;
+  }
+`;

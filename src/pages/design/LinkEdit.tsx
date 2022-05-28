@@ -1,4 +1,5 @@
 import { DocumentData } from "firebase/firestore";
+import styled from "styled-components";
 import { useFirestore } from "../../hooks/useFirestore";
 import LinkColors from "./LinkColors";
 
@@ -13,17 +14,17 @@ const LinkEdit = (document: DocumentData) => {
     }
     if (btnTitle === "fill-no-border") {
       return updateDocument(document.id, {
-        linkStyle: { ...document.linkStyle, border_radius: "rounded-none" },
+        linkStyle: { ...document.linkStyle, border_radius: "0" },
       });
     }
     if (btnTitle === "fill-border-xl") {
       return updateDocument(document.id, {
-        linkStyle: { ...document.linkStyle, border_radius: "rounded-3xl" },
+        linkStyle: { ...document.linkStyle, border_radius: "1.5rem" },
       });
     }
     if (btnTitle === "fill-border-lg") {
       return updateDocument(document.id, {
-        linkStyle: { ...document.linkStyle, border_radius: "rounded-lg" },
+        linkStyle: { ...document.linkStyle, border_radius: "0.75rem" },
       });
     }
     return;
@@ -31,24 +32,21 @@ const LinkEdit = (document: DocumentData) => {
 
   return (
     <>
-      <article className="flex flex-col gap-4 p-4 bg-white rounded-md mb-8">
-        <h2>Fill</h2>
-        <ul className="flex justify-between gap-4 ">
-          <li
-            className="bg-gray-400 p-4 flex-grow cursor-pointer"
+      <LinkEditor>
+        <h3>Fill</h3>
+        <ul>
+          <LinkStyle
             onClick={(e) => changeStyle(e)}
             title="fill-no-border"
-          ></li>
-          <li
-            className="bg-gray-400 p-4 flex-grow rounded-3xl cursor-pointer"
+          ></LinkStyle>
+          <LinkRound
             onClick={(e) => changeStyle(e)}
             title="fill-border-xl"
-          ></li>
-          <li
-            className="bg-gray-400 p-4 flex-grow rounded-lg cursor-pointer"
+          ></LinkRound>
+          <LinkRoundSmall
             onClick={(e) => changeStyle(e)}
             title="fill-border-lg"
-          ></li>
+          ></LinkRoundSmall>
         </ul>
         {/* <h2>Outline</h2>
       <ul className="flex justify-between gap-4">
@@ -80,11 +78,44 @@ const LinkEdit = (document: DocumentData) => {
           onClick={(e) => changeStyle(e)}
         ></li>
       </ul> */}
-      </article>
-      <h1 className="font-semibold my-12 mb-4 text-2xl">Button colors</h1>
-      <LinkColors {...document} />
+      </LinkEditor>
     </>
   );
 };
 
 export default LinkEdit;
+
+const LinkEditor = styled.article`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.375rem;
+  margin-bottom: 2rem;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    li {
+      background-color: #9ca3af;
+      padding: 1rem;
+      flex-grow: 1;
+      cursor: pointer;
+    }
+  }
+`;
+
+const LinkStyle = styled.li`
+  background-color: #9ca3af;
+  padding: 1rem;
+  flex-grow: 1;
+  cursor: pointer;
+`;
+const LinkRound = styled(LinkStyle)`
+  border-radius: 1.5rem;
+`;
+const LinkRoundSmall = styled(LinkStyle)`
+  border-radius: 0.75rem;
+`;

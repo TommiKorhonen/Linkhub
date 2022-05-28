@@ -7,6 +7,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { useCollection } from "../../hooks/useCollection";
 import { useDocument } from "../../hooks/useDocument";
 import { SectionEditors, StyledDesign } from "./Design.styled";
+import LinkColors from "./LinkColors";
 import LinkEdit from "./LinkEdit";
 import ProfileEdit from "./ProfileEdit";
 import ThemeEdit from "./ThemeEdit";
@@ -39,14 +40,14 @@ const Design = () => {
   return (
     <StyledDesign>
       <SectionEditors>
-        <Container>
-          <h2>Profile</h2>
-          <ProfileEdit />
-          <h2>Theme</h2>
-          <ThemeEdit {...document} />
-          <h2>Button style</h2>
-          <LinkEdit {...document} />
-        </Container>
+        <h2>Profile</h2>
+        <ProfileEdit />
+        <h2>Theme</h2>
+        <ThemeEdit {...document} />
+        <h2>Button style</h2>
+        <LinkEdit {...document} />
+        <h2>Button colors</h2>
+        <LinkColors {...document} />
       </SectionEditors>
       <PreviewContainer>
         <Preview {...document} links={linkDoc} />

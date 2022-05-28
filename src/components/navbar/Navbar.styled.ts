@@ -12,6 +12,7 @@ export const List = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-right: 1rem;
 `;
 
 export const ListItemLeft = styled.li`
