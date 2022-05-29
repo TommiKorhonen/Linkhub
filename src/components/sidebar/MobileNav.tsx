@@ -12,6 +12,7 @@ import { useLogout } from "../../hooks/useLogout";
 import { XCircleIcon } from "@heroicons/react/outline";
 import { DocumentData } from "firebase/firestore";
 import { useCollection } from "../../hooks/useCollection";
+import styled from "styled-components";
 
 const MobileNav = () => {
   const { logout } = useLogout();
@@ -26,7 +27,7 @@ const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <nav className="flex items-center justify-between flex-wrap bg-purple-500 p-4 w-full sm:hidden">
+      <StyledNav className="flex items-center justify-between flex-wrap bg-purple-500 p-4 w-full sm:hidden">
         <ul className="flex gap-4 text-white">
           <li>
             <Link to="/create">Create</Link>
@@ -46,8 +47,8 @@ const MobileNav = () => {
             Logout
           </button>
         </div>
-      </nav>
-      <div className="sm:hidden">
+      </StyledNav>
+      <ModalContainer>
         {isOpen && (
           <Modal>
             <section className="flex h-full items-center justify-center">
@@ -59,9 +60,61 @@ const MobileNav = () => {
             </section>
           </Modal>
         )}
-      </div>
+      </ModalContainer>
     </>
   );
 };
 
 export default MobileNav;
+
+const StyledNav = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: ${({ theme }) => theme.colors.themeColor};
+  padding: 1rem;
+  width: 100%;
+
+  @media (min-width: ${({ theme }) => theme.sm}) {
+    display: none;
+  }
+
+  ul {
+    display: flex;
+    gap: 1rem;
+    a {
+      color: white;
+    }
+  }
+  button {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 100%;
+  }
+`;
+
+const ModalContainer = styled.div`
+  section {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      position: absolute;
+      cursor: pointer;
+      color: black;
+      background-color: white;
+      padding: 0.5rem;
+      border-radius: 9999px;
+      top: 90%;
+      height: 4rem;
+      width: 4rem;
+    }
+  }
+  @media (min-width: ${({ theme }) => theme.sm}) {
+    display: none;
+  }
+`;
