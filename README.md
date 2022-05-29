@@ -19,7 +19,7 @@ I wanted to learn how linktree was made so I made my own version.
 
 * React
 * Typescript 
-* Tailwind
+* Styled Components
 
 ### Testing
 
