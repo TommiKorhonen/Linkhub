@@ -19,6 +19,7 @@ import {
 import { Container } from "../../components/styles/Container.styled";
 import { Success } from "../../components/styles/Success.styled";
 import { PreviewContainer } from "../../components/styles/PreviewContainer.styled";
+import { Loading } from "../../components/styles/Loading.styled";
 
 const Dashboard = () => {
   const { user } = useAuthContext();
@@ -46,9 +47,9 @@ const Dashboard = () => {
   };
   if (!document) {
     return (
-      <div className="w-full h-screen flex items-center">
-        <h1 className="mx-auto text-7xl">Loading...</h1>
-      </div>
+      <Loading>
+        <h1>Loading...</h1>
+      </Loading>
     );
   }
   return (

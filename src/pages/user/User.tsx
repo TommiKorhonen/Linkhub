@@ -5,6 +5,10 @@ import { useParams } from "react-router-dom";
 import LinkList from "../../components/linklist/LinkList";
 import { useCollection } from "../../hooks/useCollection";
 import { DocumentData } from "firebase/firestore";
+import { Loading } from "../../components/styles/Loading.styled";
+import { LinksContainer, StyledUser, UserWrapper } from "./User.styled";
+import { Error } from "../../components/styles/Error.styled";
+import styled from "styled-components";
 
 const User = () => {
   let { username } = useParams();
@@ -20,56 +24,62 @@ const User = () => {
 
   if (error) {
     return (
-      <div className="text-center h-screen flex items-center">
-        <h1 className="error m-auto">{error}</h1>
-      </div>
+      <ErrorContainer>
+        <Error>{error}</Error>
+      </ErrorContainer>
     );
   }
   if (!document) {
     return (
-      <div className="text-center h-screen flex items-center">
-        <h1 className="mx-auto text-7xl">Loading...</h1>
-      </div>
+      <Loading>
+        <h1>Loading...</h1>
+      </Loading>
     );
   }
   return (
-    <div
-      className="mx-auto h-full flex flex-col items-center justify-center"
+    <StyledUser
       style={{
         backgroundColor: document.background_color
           ? document.background_color
           : "#ffffff",
       }}
     >
-      <div className="max-w-[680px] h-screen w-full overflow-hidden">
+      <UserWrapper>
         {/* Avatar component */}
-        <div className="flex flex-col items-center gap-4 mb-8 mt-3">
+        <div>
           <Avatar src={document.photoURL} h={96} w={96} />
-          <div className="flex flex-col gap-1">
+          <div>
             {/* Title */}
             <h2
               style={{
                 color: document.text_color ? document.text_color : "#000000",
               }}
-              className="text-center font-semibold"
             >
               @{document.displayName}
             </h2>
             {/* Bio */}
-            <p
-              className="font-semibold text-center"
-              style={{ color: document.text_color }}
-            >
-              {document.bio ? document.bio : ""}
+            <p style={{ color: document.text_color }}>
+              {document.bio ? document.bio : ""}{" "}
             </p>
           </div>
         </div>
-        <div className="flex flex-col gap-6 px-3 mt-8">
+        <LinksContainer>
           {linkDoc && <LinkList links={linkDoc} style={document.linkStyle} />}
-        </div>
-      </div>
-    </div>
+        </LinksContainer>
+      </UserWrapper>
+    </StyledUser>
   );
 };
 
 export default User;
+
+export const ErrorContainer = styled.div`
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  p {
+    margin: auto;
+  }
+`;

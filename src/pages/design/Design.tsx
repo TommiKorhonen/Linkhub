@@ -2,10 +2,13 @@ import { DocumentData } from "firebase/firestore";
 import React from "react";
 import Preview from "../../components/preview/Preview";
 import { Container } from "../../components/styles/Container.styled";
+import { Error } from "../../components/styles/Error.styled";
+import { Loading } from "../../components/styles/Loading.styled";
 import { PreviewContainer } from "../../components/styles/PreviewContainer.styled";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useCollection } from "../../hooks/useCollection";
 import { useDocument } from "../../hooks/useDocument";
+import { ErrorContainer } from "../user/User";
 import { SectionEditors, StyledDesign } from "./Design.styled";
 import LinkColors from "./LinkColors";
 import LinkEdit from "./LinkEdit";
@@ -25,16 +28,16 @@ const Design = () => {
   // console.log(linkDoc);
   if (error) {
     return (
-      <div className="text-center h-screen flex items-center">
-        <h1 className="mx-auto error text-7xl">{error}</h1>
-      </div>
+      <ErrorContainer className="text-center h-screen flex items-center">
+        <Error>{error}</Error>
+      </ErrorContainer>
     );
   }
   if (!document) {
     return (
-      <div className="w-full h-screen flex items-center">
-        <h1 className="mx-auto text-7xl">Loading...</h1>
-      </div>
+      <Loading>
+        <h1>Loading...</h1>
+      </Loading>
     );
   }
   return (
