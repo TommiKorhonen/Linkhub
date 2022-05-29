@@ -8,6 +8,7 @@ export const StyledSidebar = styled.nav`
   width: 200px;
   height: 100%;
   background-color: ${({ theme }) => theme.colors.themeColor};
+  overflow: hidden;
 
   button {
     display: flex;
@@ -44,12 +45,12 @@ export const UserContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   h3 {
     font-weight: 700;
     color: white;
     text-align: center;
     margin-bottom: 2rem;
+    font-size: 1rem;
   }
 `;
 
