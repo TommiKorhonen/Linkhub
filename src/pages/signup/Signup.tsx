@@ -19,6 +19,9 @@ const Signup = () => {
     e.preventDefault();
     setMessage("");
     const docIds = await documents.map((doc: any) => doc.id);
+    if (displayName.length > 15) {
+      return setMessage("Username length must be between 1-15 characters");
+    }
     if (docIds.includes(displayName)) {
       return setMessage("Username already exists");
     }
