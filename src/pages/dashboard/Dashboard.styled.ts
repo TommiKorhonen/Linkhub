@@ -27,7 +27,7 @@ export const SectionLinks = styled.section`
     font-size: 1.875rem;
   }
   @media (min-width: ${({ theme }) => theme.sm}) {
-    padding: 2rem;
+    padding: 3rem;
   }
 `;
 export const StyledCopy = styled.div`
