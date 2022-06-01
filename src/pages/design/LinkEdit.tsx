@@ -34,11 +34,11 @@ const LinkEdit = (document: DocumentData) => {
     <>
       <LinkEditor>
         <h3>Fill</h3>
-        <ul>
-          <LinkStyle
+        <LinkButtons>
+          <LinkButton
             onClick={(e) => changeStyle(e)}
             title="fill-no-border"
-          ></LinkStyle>
+          ></LinkButton>
           <LinkRound
             onClick={(e) => changeStyle(e)}
             title="fill-border-xl"
@@ -47,7 +47,7 @@ const LinkEdit = (document: DocumentData) => {
             onClick={(e) => changeStyle(e)}
             title="fill-border-lg"
           ></LinkRoundSmall>
-        </ul>
+        </LinkButtons>
         {/* <h2>Outline</h2>
       <ul className="flex justify-between gap-4">
         <li
@@ -93,29 +93,23 @@ const LinkEditor = styled.article`
   background-color: white;
   border-radius: 0.375rem;
   margin-bottom: 2rem;
-
-  ul {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    li {
-      background-color: #9ca3af;
-      padding: 1rem;
-      flex-grow: 1;
-      cursor: pointer;
-    }
-  }
 `;
 
-const LinkStyle = styled.li`
+const LinkButton = styled.button`
   background-color: #9ca3af;
+  border: none;
   padding: 1rem;
   flex-grow: 1;
   cursor: pointer;
 `;
-const LinkRound = styled(LinkStyle)`
+const LinkButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+`;
+const LinkRound = styled(LinkButton)`
   border-radius: 1.5rem;
 `;
-const LinkRoundSmall = styled(LinkStyle)`
+const LinkRoundSmall = styled(LinkButton)`
   border-radius: 0.75rem;
 `;
