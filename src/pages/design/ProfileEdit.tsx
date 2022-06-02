@@ -94,7 +94,7 @@ const ProfileEdit = () => {
           <textarea value={bio} onChange={calculateBio} maxLength={80} />
         </label>
         <BioLength>{bioLength}/80</BioLength>
-        <Button>Save Changes</Button>
+        <Button data-cy="submitProfile">Save Changes</Button>
       </BioEdit>
     </FormEditor>
   );

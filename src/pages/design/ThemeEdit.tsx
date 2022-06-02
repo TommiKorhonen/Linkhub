@@ -83,7 +83,7 @@ const ThemeEdit = (document: DocumentData) => {
         <ResetButton onClick={() => setTextColor("")}>Reset</ResetButton>
       )}
       <ButtonContainer>
-        <Button>Save Changes</Button>
+        <Button data-cy="themeSubmit">Save Changes</Button>
       </ButtonContainer>
     </FormEditor>
   );

@@ -45,7 +45,9 @@ const Preview: React.FC<IUserDoc> = (props) => {
           {/* Title */}
           <h3 style={{ color: text_color }}>@{displayName}</h3>
           {/* Bio */}
-          <p style={{ color: text_color }}>{bio ? bio : ""}</p>
+          <p data-cy="bio" style={{ color: text_color }}>
+            {bio ? bio : ""}
+          </p>
         </div>
         <div>{links && <LinkList links={links} style={linkStyle} />}</div>
       </PreviewWrapper>
