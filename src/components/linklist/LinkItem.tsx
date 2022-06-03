@@ -24,6 +24,7 @@ const LinkItem: React.FC<IlinkItemprops> = ({ url, title, style }) => {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
+      data-cy="linkItem"
     >
       {title}
     </StyledLinks>

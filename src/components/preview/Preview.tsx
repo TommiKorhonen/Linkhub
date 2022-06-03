@@ -36,7 +36,10 @@ const Preview: React.FC<IUserDoc> = (props) => {
     linkStyle,
   } = props;
   return (
-    <StyledPreview style={{ backgroundColor: background_color }}>
+    <StyledPreview
+      data-cy="previewBg"
+      style={{ backgroundColor: background_color }}
+    >
       <PreviewWrapper>
         <div>
           <Avatar src={photoURL} h={96} w={96} />

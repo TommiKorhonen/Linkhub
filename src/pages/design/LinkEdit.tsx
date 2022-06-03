@@ -38,14 +38,17 @@ const LinkEdit = (document: DocumentData) => {
           <LinkButton
             onClick={(e) => changeStyle(e)}
             title="fill-no-border"
+            data-cy="noBorder"
           ></LinkButton>
           <LinkRound
             onClick={(e) => changeStyle(e)}
             title="fill-border-xl"
+            data-cy="borderXl"
           ></LinkRound>
           <LinkRoundSmall
             onClick={(e) => changeStyle(e)}
             title="fill-border-lg"
+            data-cy="borderLg"
           ></LinkRoundSmall>
         </LinkButtons>
         {/* <h2>Outline</h2>

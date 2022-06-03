@@ -63,7 +63,7 @@ const ThemeEdit = (document: DocumentData) => {
           title="bgColor"
           type="color"
           value={bgColor}
-          onChange={(e) => setBgColor(e.target.value)}
+          onInput={(e) => setBgColor(e.currentTarget.value)}
         />
       </BgEditor>
       {bgColor && (
