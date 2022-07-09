@@ -2,6 +2,35 @@ import { DocumentData } from "firebase/firestore";
 import styled from "styled-components";
 import { useFirestore } from "../../hooks/useFirestore";
 
+const LinkEditor = styled.article`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.375rem;
+  margin-bottom: 2rem;
+`;
+
+const LinkButton = styled.button`
+  background-color: #9ca3af;
+  border: none;
+  padding: 1rem;
+  flex-grow: 1;
+  cursor: pointer;
+`;
+const LinkButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+`;
+const LinkRound = styled(LinkButton)`
+  border-radius: 1.5rem;
+`;
+const LinkRoundSmall = styled(LinkButton)`
+  border-radius: 0.75rem;
+`;
+
 const LinkEdit = (document: DocumentData) => {
   const { updateDocument } = useFirestore("users");
 
@@ -11,20 +40,19 @@ const LinkEdit = (document: DocumentData) => {
     if (!btnTitle) {
       return;
     }
-    if (btnTitle === "fill-no-border") {
-      return updateDocument(document.id, {
-        linkStyle: { ...document.linkStyle, border_radius: "0" },
-      });
-    }
-    if (btnTitle === "fill-border-xl") {
-      return updateDocument(document.id, {
-        linkStyle: { ...document.linkStyle, border_radius: "1.5rem" },
-      });
-    }
-    if (btnTitle === "fill-border-lg") {
-      return updateDocument(document.id, {
-        linkStyle: { ...document.linkStyle, border_radius: "0.75rem" },
-      });
+    switch (btnTitle) {
+      case "fill-no-border":
+        return updateDocument(document.id, {
+          linkStyle: { ...document.linkStyle, border_radius: "0" },
+        });
+      case "fill-border-xl":
+        return updateDocument(document.id, {
+          linkStyle: { ...document.linkStyle, border_radius: "1.5rem" },
+        });
+      case "fill-border-lg":
+        return updateDocument(document.id, {
+          linkStyle: { ...document.linkStyle, border_radius: "0.75rem" },
+        });
     }
     return;
   };
@@ -86,32 +114,3 @@ const LinkEdit = (document: DocumentData) => {
 };
 
 export default LinkEdit;
-
-const LinkEditor = styled.article`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
-  background-color: white;
-  border-radius: 0.375rem;
-  margin-bottom: 2rem;
-`;
-
-const LinkButton = styled.button`
-  background-color: #9ca3af;
-  border: none;
-  padding: 1rem;
-  flex-grow: 1;
-  cursor: pointer;
-`;
-const LinkButtons = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-`;
-const LinkRound = styled(LinkButton)`
-  border-radius: 1.5rem;
-`;
-const LinkRoundSmall = styled(LinkButton)`
-  border-radius: 0.75rem;
-`;
