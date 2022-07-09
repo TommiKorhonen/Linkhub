@@ -1,7 +1,5 @@
 import { DocumentData } from "firebase/firestore";
-import React from "react";
 import Preview from "../../components/preview/Preview";
-import { Container } from "../../components/styles/Container.styled";
 import { Error } from "../../components/styles/Error.styled";
 import { Loading } from "../../components/styles/Loading.styled";
 import { PreviewContainer } from "../../components/styles/PreviewContainer.styled";

@@ -1,7 +1,6 @@
 import { DocumentData } from "firebase/firestore";
 import styled from "styled-components";
 import { useFirestore } from "../../hooks/useFirestore";
-import LinkColors from "./LinkColors";
 
 const LinkEdit = (document: DocumentData) => {
   const { updateDocument } = useFirestore("users");

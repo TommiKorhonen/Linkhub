@@ -1,4 +1,3 @@
-import React from "react";
 import Avatar from "../../components/avatar/Avatar";
 import { useDocument } from "../../hooks/useDocument";
 import { useParams } from "react-router-dom";
