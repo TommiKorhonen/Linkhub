@@ -25,7 +25,6 @@ export const useDocument = (
           }
         },
         (err) => {
-          console.log(err.message);
           setError("Failed to get document");
         }
       );

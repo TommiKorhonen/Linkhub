@@ -52,7 +52,6 @@ const ProfileEdit = () => {
     setThumbnail(null);
     const target = e.target as HTMLInputElement;
     const selected: File = (target.files as FileList)[0];
-    // console.log(selected);
 
     if (!selected) {
       setThumbnailError("Please select a file");
@@ -69,7 +68,6 @@ const ProfileEdit = () => {
 
     setThumbnailError(null);
     setThumbnail(selected);
-    console.log("thumbnail updated");
   };
   const calculateBio = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setBio(e.target.value);

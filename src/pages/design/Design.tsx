@@ -23,7 +23,6 @@ const Design = () => {
     documents &&
     documents.filter((link: DocumentData) => link.createdBy.id === user?.uid);
 
-  // console.log(linkDoc);
   if (error) {
     return (
       <ErrorContainer className="text-center h-screen flex items-center">
